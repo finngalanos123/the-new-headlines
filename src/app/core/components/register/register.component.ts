@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SubjectService} from '../../services/subject.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
         private auth: AuthService,
         private router: Router,
         private dialog: MatDialog,
-        // private toastr: ToastrService,
+        private toastr: ToastrService,
         private subject: SubjectService,
         private registerDialogRef: MatDialogRef<RegisterComponent>,
         private fb: FormBuilder
@@ -30,12 +31,11 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.get();
     }
+
 
     showLogin() {
         this.registerDialogRef.close();
-        // this.dialog.closeAll();
         this.subject.setDialogState({state: 'closed', dialog: 'register'});
 
     }
@@ -43,9 +43,8 @@ export class RegisterComponent implements OnInit {
     register() {
         this.auth.register(this.registerForm.value).subscribe((r: any) => {
 
-            // this.toastr.success('Registered successfully');
+            this.toastr.success('Registered successfully');
             this.dialog.closeAll();
-            // this.router.navigate(['']);
         });
     }
 

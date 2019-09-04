@@ -11,7 +11,9 @@ import {MaterialModule} from './modules/material.module';
 import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {JwtModule} from '@auth0/angular-jwt';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {RequestInterceptor} from './helpers/http.interceptor';
 
 
 // Token getter for JWT module
@@ -41,6 +43,14 @@ export function tokenGetter() {
                 blacklistedRoutes: ['localhost:3000/auth/']
             }
         }),
+        ToastrModule.forRoot()
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+        },
     ],
     exports: [
         HeaderComponent,

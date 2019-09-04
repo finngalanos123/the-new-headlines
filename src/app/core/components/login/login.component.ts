@@ -46,18 +46,6 @@ export class LoginComponent implements OnInit {
     showRegister() {
         this.loginDialogRef.close();
         this.subject.setDialogState({state: 'closed', dialog: 'login'});
-
-        // const dialogRef = this.dialog.open(RegisterComponent, {
-        //     width: '500px',
-        //     data: {}
-        // });
-        //
-        // dialogRef.afterClosed().subscribe(result => {
-        //     console.log('The dialog was closed');
-        // });
-
-
-        // ModalDialog.openDialog(2, this.matDialog);
     }
 
     authenticate(data) {
