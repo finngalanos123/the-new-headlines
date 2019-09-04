@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {MAIN_SECTIONS} from '../../constants/app.config';
 import {LoginComponent} from '../login/login.component';
+import {SubjectService} from '../../services/subject.service';
+import {RegisterComponent} from '../register/register.component';
 
 
 @Component({
@@ -43,7 +45,7 @@ export class HeaderComponent implements OnInit {
         // private authService: authS,
         public auth: AuthService,
         // private common: CommonService,
-        // private subject: SubjectService,
+        private subject: SubjectService,
         public router: Router,
         private route: ActivatedRoute,
         private _fb: FormBuilder,
@@ -58,11 +60,16 @@ export class HeaderComponent implements OnInit {
         //   this.userData.fullName = dt.fullName;
         // });
         //
-        // this.subject.getDialogState().subscribe((dt) => {
-        //   if (dt.state === 'closed') {
-        //     ModalDialog.openDialog(dt.dialog === 'login' ? 2 : 1, this.dialog);
-        //   }
-        // });
+        this.subject.getDialogState().subscribe((dt) => {
+            if (dt.state === 'closed') {
+                if (dt.dialog === 'login') {
+                    this.dialog.open(RegisterComponent);
+                } else {
+
+                    this.dialog.open(LoginComponent);
+                }
+            }
+        });
         //
         // this.subject.getPostCategory().subscribe(category => {
         //   this.postCategory = category;

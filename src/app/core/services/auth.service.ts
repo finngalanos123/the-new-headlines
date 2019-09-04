@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {API_URL} from '../constants/app.config';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -7,8 +9,18 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class AuthService {
 
     constructor(
-        private jwtHelper: JwtHelperService
+        private jwtHelper: JwtHelperService,
+        private http: HttpClient
     ) {
+    }
+
+
+    authenticate(data) {
+        return this.http.post(`${API_URL}/api/user/login`, data);
+    }
+
+    register(data) {
+        return this.http.post(`${API_URL}/api/user/signup`, data);
     }
 
     loggedIn() {
