@@ -1,6 +1,6 @@
 <mat-sidenav-container>
-    <mat-sidenav [opened]="true">
-        <app-sidebar></app-sidebar>
+    <mat-sidenav [opened]="router.url.includes('admin')" #sidenav [mode]="getSidenavMode()">
+        <app-sidebar (closeSidebar)="sidenav.toggle()"></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
         <app-header></app-header>
