@@ -6,16 +6,26 @@ import {throwIfAlreadyLoaded} from './guards/module-imports.guard';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {SharedModule} from '../shared/shared.module';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {MaterialModule} from './modules/material.module';
 
 @NgModule({
-    declarations: [HeaderComponent, FooterComponent, LoginComponent, RegisterComponent],
+    declarations: [
+        HeaderComponent,
+        FooterComponent,
+        LoginComponent,
+        RegisterComponent,
+        SidebarComponent
+    ],
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
     ],
     exports: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        SidebarComponent,
+        MaterialModule
     ]
 })
 export class CoreModule {
