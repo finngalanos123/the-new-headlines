@@ -9,6 +9,15 @@ import {SharedModule} from '../shared/shared.module';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {MaterialModule} from './modules/material.module';
 import {RouterModule} from '@angular/router';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {JwtModule} from '@auth0/angular-jwt';
+
+
+// Token getter for JWT module
+export function tokenGetter() {
+    const token = localStorage.getItem('token') || '';
+    return token ? token : '';
+}
 
 @NgModule({
     declarations: [
@@ -21,13 +30,24 @@ import {RouterModule} from '@angular/router';
     imports: [
         CommonModule,
         SharedModule,
-        RouterModule
+        RouterModule,
+        FlexLayoutModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                whitelistedDomains: ['localhost:3000'],
+                blacklistedRoutes: ['localhost:3000/auth/']
+            }
+        }),
     ],
     exports: [
         HeaderComponent,
         FooterComponent,
         SidebarComponent,
         MaterialModule
+    ],
+    entryComponents: [
+        LoginComponent
     ]
 })
 export class CoreModule {

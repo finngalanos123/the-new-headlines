@@ -1,3 +1,203 @@
-<p>
-  header works!
-</p>
+<header class="header home-header-bg fixed-top" id="header_top">
+    <div class="navbar">
+        <div class="content">
+            <div class="logo">
+                <div>
+                    <a (click)="goToLink('/')">
+                        <img src="assets/images/logo_white_background.jpg" alt="">
+                    </a>
+
+                    <div class="search_box">
+                        <form [formGroup]="searchForm" *ngIf="searchAllowed">
+                            <p>Readers decide "The Headlines" <a routerLink="/about">more... </a></p>
+                            <div class="input-group">
+                                <input type="text" class="form-control searchInput" placeholder="Search"
+                                       aria-label="search"
+                                       formControlName="searchTerm" aria-describedby="basic-addon1"
+                                       (keyup)="doSearch()">
+                                <div class="input-group-prepend searchButton">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+                <ul>
+                    <li class="post" ng-class="{ active: isActive('/posts') }" fxShow.gt-lg [fxHide.sm]="true"
+                        fxHide.xs="true">
+                        <!--                        <a *ngIf="auth.loggedIn()" mat-button (click)="showLoginDialog()">post</a>-->
+                        <a *ngIf="auth.loggedIn() && router.url!=='/add-post'" routerLink="/add-post"
+                           mat-button>post</a>
+                    </li>
+                    <li class="login" fxShow.gt-lg [fxHide.sm]="true" fxHide.xs="true">
+                        <a *ngIf="!auth.loggedIn()" mat-button (click)="showLoginDialog()">login / sign up</a>
+                        <a *ngIf="auth.loggedIn()">{{userLoggined.name}}</a>
+                    </li>
+                    <li class="logout">
+                        <ul *ngIf="auth.loggedIn()" [fxHide.sm]="true" fxHide.xs="true">
+                            <li class="header-notification">
+                            </li>
+                            <li class="user-profile header-notification" [hidden]="!auth.loggedIn()">
+                                <button mat-button [matMenuTriggerFor]="beforeMenu" #trigger="matMenuTrigger"
+                                        class="user_name">
+                                    <span class="userFullName">{{userData ? userData.fullName : '/n/a'}}</span>
+                                    <i class="feather icon-chevron-down"></i>
+                                </button>
+                                <mat-menu #beforeMenu="matMenu" yPosition="below">
+                                    <ul class="profile_links" (mouseleave)="hideDiv(trigger)">
+                                        <li>
+                                            <a (click)="goToLink('/profile')">My Profile</a>
+                                        </li>
+                                        <li>
+                                            <a (click)="goToLink('/managePost')">Manage Posts</a>
+                                        </li>
+                                        <li>
+                                            <a (click)="goToLink('/admin/dashboard')">Admin</a>
+                                        </li>
+                                        <li>
+                                            <a (click)="logOut()">LogOut</a>
+                                        </li>
+                                    </ul>
+                                </mat-menu>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <mat-toolbar>
+                <mat-toolbar-row>
+
+                    <div class="flex_container mobile_flex_cont">
+                        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+                            <i class="fas fa-bars"></i>
+                        </button>
+
+                        <div fxShow="true" fxHide.gt-sm>
+                            <div class="user">
+                                <div>
+                                    <div class="user_info">
+                                        <div class="logout">
+                                            <ul class="mobile_list">
+                                                <li class="post" ng-class="{ active: isActive('/posts') }">
+                                                    <a *ngIf="!auth.loggedIn()" mat-button (click)="showLoginDialog()"><i
+                                                            class="fas fa-link"></i></a>
+                                                    <a *ngIf="auth.loggedIn()" routerLink="/add-post" mat-button><i
+                                                            class="fas fa-link"></i></a>
+                                                </li>
+                                                <li class="header-notification" *ngIf="auth.loggedIn()">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/user.png" alt="" #toggler>
+                                        </div>
+                                        <div class="mobile_user_info" *ngIf="isShown" #authMenu
+                                        >
+                                            <ul class="">
+                                                <li class="login" *ngIf="!auth.loggedIn()">
+                                                    <a *ngIf="!auth.loggedIn()" (click)="showLoginDialog()">Login / Sign
+                                                        Up</a>
+                                                </li>
+                                                <li class="user-profile header-notification login"
+                                                    *ngIf="auth.loggedIn()">
+                                                    <a class="user_name">
+                                                        <span class="userFullName">{{userData ? userData.fullName : '/n/a'}}</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul *ngIf="!auth.loggedIn()">
+                                                <li><a routerLink="/about">About</a></li>
+                                                <li><a>Privacy Policy</a></li>
+                                                <li><a>
+                                                    <div class="feedback_btn_mobile">
+                                                        <button (click)="openDialog('ok')">Feedback</button>
+                                                    </div>
+                                                </a>
+                                                </li>
+                                            </ul>
+                                            <ul *ngIf="auth.loggedIn()">
+                                                <li>
+                                                    <a (click)="goToLink('/profile')">My Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a (click)="goToLink('/managePost')">Manage Posts</a>
+                                                </li>
+                                                <li>
+                                                    <a (click)="goToLink('/about')">About</a>
+                                                </li>
+                                                <li>
+                                                    <a>Privacy Policy</a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                        <div class="feedback_btn_mobile">
+                                                            <button (click)="openDialog('ok')">Feedback</button>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a (click)="logOut()">Logout</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="categories_text">CATEGORIES</div>
+
+                    <div fxShow="true" fxHide.lt-md style="width: 100%">
+                        <div class="menu">
+                            <div class="burger">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <ul class="toggle none-768">
+                                <li *ngFor="let section of sections"
+                                    [class.active]="router.url===section.link || postCategory === section.dbName"
+                                    routerLinkActive="active">
+                                    <a (click)="goToLink(section.link)"
+                                       [matTooltip]="section.tooltip">{{section['name']}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </mat-toolbar-row>
+            </mat-toolbar>
+            <mat-sidenav-container fxFlexFill>
+                <mat-sidenav #sidenav>
+                    <mat-nav-list>
+                        <a (click)="sidenav.toggle()" href="" mat-list-item><i class="fas fa-times"></i></a>
+                        <div class="menu">
+                            <div class="burger">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <ul class="toggle none-768">
+                                <li *ngFor="let section of sections"
+                                    [class.active]="router.url===section.link || this.postCategory === section.dbName"
+                                    routerLinkActive="active" [matTooltip]="section.tooltip">
+                                    <a (click)="goToLink(section.link)">{{section['name']}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </mat-nav-list>
+                </mat-sidenav>
+                <mat-sidenav-content fxFlexFill></mat-sidenav-content>
+            </mat-sidenav-container>
+        </div>
+    </div>
+    <a scrollTo href="#header_top" id="button" [hidden]="!showScrollToTopBtn"><i class="fas fa-chevron-up"></i></a>
+    <div class="feedback_btn">
+        <button (click)="openDialog('ok')">Feedback</button>
+    </div>
+
+</header>
+
