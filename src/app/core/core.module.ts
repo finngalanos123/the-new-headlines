@@ -8,6 +8,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {SharedModule} from '../shared/shared.module';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {MaterialModule} from './modules/material.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import {MaterialModule} from './modules/material.module';
     imports: [
         CommonModule,
         SharedModule,
+        RouterModule
     ],
     exports: [
         HeaderComponent,
