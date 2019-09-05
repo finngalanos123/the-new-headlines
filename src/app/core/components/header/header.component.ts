@@ -10,6 +10,7 @@ import {RegisterComponent} from '../register/register.component';
 import GetCategory from '../../helpers/get-category';
 import {Section} from '../../models/section';
 import {filter} from 'rxjs/operators';
+import ScrollUp from '../../helpers/scroll-up';
 
 
 @Component({
@@ -193,6 +194,10 @@ export class HeaderComponent implements OnInit {
         // dialogRef.afterClosed().subscribe(result => {
         //   console.log('The dialog was closed');
         // });
+    }
+
+    scrollToTop() {
+        ScrollUp.do();
     }
 
 }

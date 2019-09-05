@@ -194,7 +194,9 @@
             </mat-sidenav-container>
         </div>
     </div>
-    <a scrollTo href="#header_top" id="button" [hidden]="!showScrollToTopBtn"><i class="fas fa-chevron-up"></i></a>
+    <a id="button" [hidden]="!showScrollToTopBtn" (click)="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </a>
     <div class="feedback_btn">
         <button (click)="openDialog('ok')">Feedback</button>
     </div>

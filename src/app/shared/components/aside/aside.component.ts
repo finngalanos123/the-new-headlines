@@ -13,7 +13,6 @@ import GetCategory from '../../../core/helpers/get-category';
 export class AsideComponent implements OnInit {
 
     selectedSection;
-    postCategory = 'Influence';
 
     constructor(
         private  postsService: PostsService,
@@ -44,7 +43,7 @@ export class AsideComponent implements OnInit {
     }
 
     getTopNews() {
-        this.postsService.getTopNews(this.postCategory).subscribe((data: any) => {
+        this.postsService.getTopNews(this.selectedSection.dbName).subscribe((data: any) => {
             this.posts = data;
             this.filteredPosts.news = data.news.slice(0, this.defaultRecords);
         });
