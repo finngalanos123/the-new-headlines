@@ -15,7 +15,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {RequestInterceptor} from './helpers/http.interceptor';
 
-
 // Token getter for JWT module
 export function tokenGetter() {
     const token = localStorage.getItem('token') || '';
@@ -28,7 +27,7 @@ export function tokenGetter() {
         FooterComponent,
         LoginComponent,
         RegisterComponent,
-        SidebarComponent
+        SidebarComponent,
     ],
     imports: [
         CommonModule,
@@ -56,7 +55,7 @@ export function tokenGetter() {
         HeaderComponent,
         FooterComponent,
         SidebarComponent,
-        MaterialModule
+        MaterialModule,
     ],
     entryComponents: [
         LoginComponent,

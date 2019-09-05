@@ -2,19 +2,23 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../core/modules/material.module';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        NotFoundComponent,
+    ],
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         MaterialModule
     ],
-    exports:[
+    exports: [
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
+        NotFoundComponent
     ]
 })
 export class SharedModule {

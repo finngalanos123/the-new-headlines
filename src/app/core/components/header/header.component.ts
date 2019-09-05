@@ -1,12 +1,15 @@
 import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {MatDialog, MatMenuTrigger} from '@angular/material';
 import {AuthService} from '../../services/auth.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {MAIN_SECTIONS} from '../../constants/app.config';
 import {LoginComponent} from '../login/login.component';
 import {SubjectService} from '../../services/subject.service';
 import {RegisterComponent} from '../register/register.component';
+import GetCategory from '../../helpers/get-category';
+import {Section} from '../../models/section';
+import {filter} from 'rxjs/operators';
 
 
 @Component({
@@ -26,10 +29,10 @@ export class HeaderComponent implements OnInit {
     searchAllowed = false;
     isShown = false;
     show = false;
-    sections = MAIN_SECTIONS;
+    sections: Section[] = MAIN_SECTIONS;
     scrollPosition = 0;
     showScrollToTopBtn = false;
-    postCategory = this.router.url === '/' ? 'Influence' : '';
+    postCategory;
 
     userLoggined: any = [];
 
@@ -70,12 +73,16 @@ export class HeaderComponent implements OnInit {
                 }
             }
         });
+
+
         //
-        // this.subject.getPostCategory().subscribe(category => {
-        //   this.postCategory = category;
-        // });
+        this.subject.getPostCategory().subscribe(category => {
+            this.postCategory = category;
+        });
+
 
         this.route.data.subscribe(dt => {
+            console.log(dt)
             if (dt.hasOwnProperty('search')) {
                 this.searchAllowed = dt.search;
             }
@@ -96,6 +103,11 @@ export class HeaderComponent implements OnInit {
             }
         });
 
+        this.router.events.pipe(
+            filter(event => event instanceof NavigationEnd)
+        ).subscribe((d: NavigationEnd) => {
+            this.postCategory = GetCategory.get(d.url);
+        });
         // const params: InitParams = {
         //   version: 'v2.8'
         // };
@@ -124,19 +136,19 @@ export class HeaderComponent implements OnInit {
         this.isShown = false;
     }
 
-    goToLink(link) {
-        this.checkConfirmation(link);
+    goToLink(section: Section) {
+        this.subject.setPostCategory(section);
+        this.checkConfirmation(section.route);
     }
 
 
-    showLoginDialog() {
+    showAuthDialog() {
         const dialogRef = this.dialog.open(LoginComponent, {
             width: '500px',
             data: {}
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
         });
     }
 
@@ -149,7 +161,7 @@ export class HeaderComponent implements OnInit {
 
             const c = confirm('Are you sure you want to discard the post?');
             if (c) {
-                this.router.navigate([link]);
+                this.router.navigate([`pages/${link}`]);
             } else {
                 this.router.navigate(['/add-post']);
             }
@@ -157,7 +169,7 @@ export class HeaderComponent implements OnInit {
             return false;
         } else {
 
-            this.router.navigate([link]);
+            this.router.navigate([`pages/${link}`]);
             window.scrollTo(0, 0);
             return true;
         }

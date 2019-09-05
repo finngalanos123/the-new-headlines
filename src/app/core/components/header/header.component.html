@@ -3,7 +3,7 @@
         <div class="content">
             <div class="logo">
                 <div>
-                    <a (click)="goToLink('/')">
+                    <a (click)="router.navigate(['/'])">
                         <img src="assets/images/logo_white_background.jpg" alt="">
                     </a>
 
@@ -30,12 +30,12 @@
                 <ul>
                     <li class="post" ng-class="{ active: isActive('/posts') }" fxShow.gt-lg [fxHide.sm]="true"
                         fxHide.xs="true">
-                        <!--                        <a *ngIf="auth.loggedIn()" mat-button (click)="showLoginDialog()">post</a>-->
+                        <!--                        <a *ngIf="auth.loggedIn()" mat-button (click)="showAuthDialog()">post</a>-->
                         <a *ngIf="auth.loggedIn() && router.url!=='/add-post'" routerLink="/add-post"
                            mat-button>post</a>
                     </li>
                     <li class="login" fxShow.gt-lg [fxHide.sm]="true" fxHide.xs="true">
-                        <a *ngIf="!auth.loggedIn()" mat-button (click)="showLoginDialog()">login / sign up</a>
+                        <a *ngIf="!auth.loggedIn()" mat-button (click)="showAuthDialog()">login / sign up</a>
                         <a *ngIf="auth.loggedIn()">{{userLoggined.name}}</a>
                     </li>
                     <li class="logout">
@@ -51,13 +51,13 @@
                                 <mat-menu #beforeMenu="matMenu" yPosition="below">
                                     <ul class="profile_links" (mouseleave)="hideDiv(trigger)">
                                         <li>
-                                            <a (click)="goToLink('/profile')">My Profile</a>
+                                            <a (click)="router.navigate(['/profile'])">My Profile</a>
                                         </li>
                                         <li>
-                                            <a (click)="goToLink('/managePost')">Manage Posts</a>
+                                            <a (click)="router.navigate(['/managePost'])">Manage Posts</a>
                                         </li>
                                         <li>
-                                            <a (click)="goToLink('/admin/dashboard')">Admin</a>
+                                            <a (click)="router.navigate(['/admin/dashboard'])">Admin</a>
                                         </li>
                                         <li>
                                             <a (click)="logOut()">LogOut</a>
@@ -84,7 +84,7 @@
                                         <div class="logout">
                                             <ul class="mobile_list">
                                                 <li class="post" ng-class="{ active: isActive('/posts') }">
-                                                    <a *ngIf="!auth.loggedIn()" mat-button (click)="showLoginDialog()"><i
+                                                    <a *ngIf="!auth.loggedIn()" mat-button (click)="showAuthDialog()"><i
                                                             class="fas fa-link"></i></a>
                                                     <a *ngIf="auth.loggedIn()" routerLink="/add-post" mat-button><i
                                                             class="fas fa-link"></i></a>
@@ -100,7 +100,7 @@
                                         >
                                             <ul class="">
                                                 <li class="login" *ngIf="!auth.loggedIn()">
-                                                    <a *ngIf="!auth.loggedIn()" (click)="showLoginDialog()">Login / Sign
+                                                    <a *ngIf="!auth.loggedIn()" (click)="showAuthDialog()">Login / Sign
                                                         Up</a>
                                                 </li>
                                                 <li class="user-profile header-notification login"
@@ -122,13 +122,13 @@
                                             </ul>
                                             <ul *ngIf="auth.loggedIn()">
                                                 <li>
-                                                    <a (click)="goToLink('/profile')">My Profile</a>
+                                                    <a (click)="router.navigate(['/profile'])">My Profile</a>
                                                 </li>
                                                 <li>
-                                                    <a (click)="goToLink('/managePost')">Manage Posts</a>
+                                                    <a (click)="router.navigate(['/managePost'])">Manage Posts</a>
                                                 </li>
                                                 <li>
-                                                    <a (click)="goToLink('/about')">About</a>
+                                                    <a (click)="router.navigate(['/about'])">About</a>
                                                 </li>
                                                 <li>
                                                     <a>Privacy Policy</a>
@@ -162,9 +162,9 @@
                             </div>
                             <ul class="toggle none-768">
                                 <li *ngFor="let section of sections"
-                                    [class.active]="router.url===section.link || postCategory === section.dbName"
+                                    [class.active]="postCategory&& postCategory.dbName === section.dbName"
                                     routerLinkActive="active">
-                                    <a (click)="goToLink(section.link)"
+                                    <a (click)="goToLink(section)"
                                        [matTooltip]="section.tooltip">{{section['name']}}</a>
                                 </li>
                             </ul>
@@ -180,11 +180,12 @@
                             <div class="burger">
                                 <i class="fas fa-bars"></i>
                             </div>
-                            <ul class="toggle none-768">
+                            <ul class="toggle none-768" *ngIf="postCategory">
+                                {{postCategory|json}}
                                 <li *ngFor="let section of sections"
-                                    [class.active]="router.url===section.link || this.postCategory === section.dbName"
+                                    [class.active]="router.url===section.route || postCategory.dbName === section.dbName"
                                     routerLinkActive="active" [matTooltip]="section.tooltip">
-                                    <a (click)="goToLink(section.link)">{{section['name']}}</a>
+                                    <a (click)="goToLink(section)">{{section['name']}}</a>
                                 </li>
                             </ul>
                         </div>
