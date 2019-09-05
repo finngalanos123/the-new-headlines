@@ -11,7 +11,7 @@
                 <!--                <app-owl-carousel [posts]="posts"></app-owl-carousel>-->
                 <div class="img-block">
                     <div class="slider_bottom_icons">
-                        <!--                        <app-status-bar></app-status-bar>-->
+                        <app-status-bar></app-status-bar>
                     </div>
                 </div>
             </div>
@@ -35,16 +35,17 @@
                         <div class="all" id="allPosts">
 
                             <!-- Selected vote category -->
-<!--                            <div *ngIf="selectedFilter.vote!=='All'" class="selectedVoteCategory">-->
-<!--                                <small class>Voting category:</small>-->
-<!--                                <span>{{selectedFilter.vote}}</span>-->
-<!--                            </div>-->
+                            <!--                            <div *ngIf="selectedFilter.vote!=='All'" class="selectedVoteCategory">-->
+                            <!--                                <small class>Voting category:</small>-->
+                            <!--                                <span>{{selectedFilter.vote}}</span>-->
+                            <!--                            </div>-->
                             <div class="loop_items item posts_items"
-                                 *ngFor="let single of filteredPosts.news| searchNews: searchTerm;let ind = index">
-                                <!--                                 infiniteScroll-->
-                                <!--                                 [infiniteScrollDistance]="2"-->
-                                <!--                                 [infiniteScrollThrottle]="50"-->
-                                <!--                                 (scrolled)="onIntersection($event, ind)"-->
+                                 *ngFor="let single of filteredPosts.news| searchNews: searchTerm;let ind = index"
+                                 infiniteScroll
+                                 [infiniteScrollDistance]="2"
+                                 [infiniteScrollThrottle]="50"
+                                 (scrolled)="onIntersection($event, ind)"
+                            >
                                 <div class="post_wrapper">
                                     <div class="user_posts">
                                         <div class="userName">
@@ -54,6 +55,7 @@
                                                 <p class="updateDate"
                                                    [matTooltip]="single.createdAt|formattedDate">{{single.createdAt|formattedDate:false}}</p>
                                             </div>
+                                            <app-post-options [single]="single"></app-post-options>
                                             <!--                                            <app-story-options [single]="single"></app-story-options>-->
                                         </div>
                                     </div>
@@ -76,54 +78,54 @@
                                         </a>
                                     </div>
                                 </div>
-                                <!--                                <app-status-bar [single]="single"></app-status-bar>-->
+                                <app-status-bar [single]="single"></app-status-bar>
                             </div>
 
                         </div>
-<!--                    </div>-->
+                        <!--                    </div>-->
 
 
-                    <div class="policy_item media_sidebar">
-                        <div class="s1m7ksmt-4 iQweaf s12j7ec3-0 dpUElj" data-redditstyle="false">
-                            <div class="_3RPJ8hHnfFohktLZca18J6">
-                                <div class="s1m7ksmt-0 drEVnI">
-                                    <div class="s3m0u52-0 bdzHTz">
-                                        <div>
-                                            <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['about'])">What
-                                                is it
-                                                all about?</a>
-                                            <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Content
-                                                policy</a>
-                                            <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Privacy
-                                                Policy</a>
-                                            <a class="s1m7ksmt-1 ebuWXQ" routerLink="">Terms</a>
+                        <div class="policy_item media_sidebar">
+                            <div class="s1m7ksmt-4 iQweaf s12j7ec3-0 dpUElj" data-redditstyle="false">
+                                <div class="_3RPJ8hHnfFohktLZca18J6">
+                                    <div class="s1m7ksmt-0 drEVnI">
+                                        <div class="s3m0u52-0 bdzHTz">
+                                            <div>
+                                                <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['about'])">What
+                                                    is it
+                                                    all about?</a>
+                                                <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Content
+                                                    policy</a>
+                                                <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Privacy
+                                                    Policy</a>
+                                                <a class="s1m7ksmt-1 ebuWXQ" routerLink="">Terms</a>
+                                            </div>
+                                        </div>
+                                        <div class="s3m0u52-0 bdzHTz">
+                                            <div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="s3m0u52-0 bdzHTz">
-                                        <div>
 
-                                        </div>
+                                    <div class="s1m7ksmt-2 jMwzIF">
+                                        <div>© 2019 Not the Headlines Ltd, All rights reserved</div>
                                     </div>
-                                </div>
-
-                                <div class="s1m7ksmt-2 jMwzIF">
-                                    <div>© 2019 Not the Headlines Ltd, All rights reserved</div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-
                 </div>
             </div>
+        </section>
+        <!--            <div class="pagination-block">-->
+        <!--                <ul>-->
+        <!--                    <li *ngFor="let paginateSingle of pages">-->
+        <!--                        <a data-id="{{paginateSingle}}" (click)="nextPage($event)">{{ paginateSingle }}</a>-->
+        <!--                    </li>-->
+        <!--                </ul>-->
+        <!--            </div>-->
+        <!--        <app-aside class="section_right" style="padding-left: 37px"></app-aside>-->
     </div>
-    </section>
-    <!--            <div class="pagination-block">-->
-    <!--                <ul>-->
-    <!--                    <li *ngFor="let paginateSingle of pages">-->
-    <!--                        <a data-id="{{paginateSingle}}" (click)="nextPage($event)">{{ paginateSingle }}</a>-->
-    <!--                    </li>-->
-    <!--                </ul>-->
-    <!--            </div>-->
-    <!--        <app-aside class="section_right" style="padding-left: 37px"></app-aside>-->
-</div>
 </div>

@@ -1,0 +1,43 @@
+.op-blue i {
+  color: white;
+}
+
+a {
+  cursor: pointer;
+}
+
+.votesCount {
+  width: 110px;
+}
+
+
+.selected {
+  color: #3788c6 !important
+}
+
+.emojiTick {
+  display: block;
+  float: left;
+  color: #3788c6 !important;
+}
+
+.Emoji {
+  display: flex;
+  align-items: center;
+
+  .voteType {
+    margin-left: 0;
+
+    .gray {
+      .fa-heart {
+        color: #e14040;
+
+      }
+
+      .fa-heart:hover {
+        transform: scale(1.05);
+      }
+
+    }
+  }
+}

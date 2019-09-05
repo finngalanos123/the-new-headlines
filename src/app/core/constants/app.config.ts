@@ -20,3 +20,24 @@ export const MAIN_SECTIONS: Section[] = [
     {name: 'Environment', route: '/environment', tooltip: 'Environment & Health', dbName: 'Environment'},
     {name: 'Public', route: '/public', tooltip: 'General News', dbName: 'Public'}
 ];
+
+export const VOTE_TYPES = [
+    {name: 'Important', displayName: 'Important', pages: ['Influence', 'Public']},
+    {name: 'Interesting', displayName: 'Interesting', pages: ['Hobbyist', 'Science', 'Environment', 'Public']},
+    {name: 'Investigate', displayName: 'Investigate', pages: ['Influence', 'Protest', 'Public']},
+    {name: 'Protest', displayName: 'Protest', pages: ['Influence', 'Environment', 'Public']},
+    {name: 'Like', displayName: 'Like', pages: ['Videos']},
+    // {name: 'Good', displayName: 'Good', pages: ['StyleAndSweat']},
+    {name: 'Love', displayName: 'Love', pages: ['StyleAndSweat'], love: true},
+    {name: 'TopClass', displayName: 'TopClass', pages: ['StyleAndSweat']},
+    {name: 'Magic', displayName: 'Magic', pages: ['StyleAndSweat']},
+    {name: 'LoveTheHuman', displayName: 'TheHuman', pages: ['HumanStories'], love: true},
+    {name: 'Informative', displayName: 'Informative', pages: ['Hobbyist', 'Science']},
+    {name: 'Protect', displayName: 'Protect', pages: ['Environment']},
+    {name: 'Inspiring', displayName: 'Inspiring', pages: ['HumanStories']},
+    {name: 'Promising', displayName: 'Promising', pages: ['JumpStartups']},
+    {name: 'ProblemSolver', displayName: 'ProblemSolver', pages: ['JumpStartups']},
+    {name: 'LoveTheColor', displayName: 'TheColor', pages: ['LoveDesigns'], love: true},
+    {name: 'Grand', displayName: 'Grand', pages: ['LoveDesigns']},
+    {name: 'Creative', displayName: 'Creative', pages: ['LoveDesigns']}
+];

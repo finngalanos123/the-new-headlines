@@ -1,0 +1,44 @@
+<div class="storyOptions">
+
+  <button (click)="toggleShow(single)"><i class="fas fa-ellipsis-h" #toggleButton></i></button>
+  <div *ngIf="isShown && single === currentPost" class="save_caret_menu_item" #share>
+
+    <ul>
+
+      <li>
+        <div>
+
+          <h3>
+            <i class="far fa-bookmark"></i>
+            Share
+          </h3>
+        </div>
+      </li>
+
+      <!-- This is here because otherwise the style of the share buttons is breaking-->
+      <share-buttons [url]="single.link" [include]="['facebook','twitter']"
+                     [theme]="'material-light'" (opened)="incrementShares($event)"
+                     [showCount]="true"></share-buttons>
+      <small class="shares">{{single.shares}} shares</small>
+      <li (click)="copyLink(single.link,copyInput)">
+        <input [value]="single.link" #copyInput class="copyInput">
+        <div class="copyLinkDiv">
+          <h3><i class="fas fa-link"></i> Copy link</h3>
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
+        </div>
+      </li>
+      <li (click)="router.navigate(['editPost/'+single._id])" *ngIf="auth.loggedIn()">
+        <div>
+          <h3><i class="far fa-clipboard"></i> Post</h3>
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
+        </div>
+      </li>
+      <li>
+        <div (click)="openDialog(single._id)">
+          <h3><i class="fas fa-bug"></i> Report</h3>
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

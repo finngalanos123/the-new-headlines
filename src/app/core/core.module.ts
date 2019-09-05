@@ -14,6 +14,8 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {RequestInterceptor} from './helpers/http.interceptor';
+import {CookieService} from 'ngx-cookie-service';
+import {CountPostScorePipe} from '../shared/pipes/count-post-score.pipe';
 
 // Token getter for JWT module
 export function tokenGetter() {
@@ -37,12 +39,13 @@ export function tokenGetter() {
         FlexLayoutModule,
         JwtModule.forRoot({
             config: {
-                tokenGetter: tokenGetter,
-                whitelistedDomains: ['localhost:3000'],
-                blacklistedRoutes: ['localhost:3000/auth/']
+                tokenGetter,
+                whitelistedDomains: ['localhost:3000', '3.8.219.107:3000'],
+                blacklistedRoutes: ['localhost:3000/auth/', '3.8.219.107:3000/auth/']
             }
         }),
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+
     ],
     providers: [
         {
@@ -50,6 +53,8 @@ export function tokenGetter() {
             useClass: RequestInterceptor,
             multi: true
         },
+        CookieService,
+        CountPostScorePipe
     ],
     exports: [
         HeaderComponent,
