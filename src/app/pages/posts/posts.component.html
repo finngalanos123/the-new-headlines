@@ -1,1 +1,129 @@
 <app-not-found *ngIf="!selectedSection"></app-not-found>
+
+<div class="content">
+    <div class="main row no-gutters">
+        <div class="Tools_headline">Politics & Business</div>
+        <section class="section_carousel"
+                 style="padding-right: 37px">
+            <div class="Tools_headline2">Headlines chosen by readers</div>
+            <div class="carusel-block" id="home_carousel">
+
+                <!--                <app-owl-carousel [posts]="posts"></app-owl-carousel>-->
+                <div class="img-block">
+                    <div class="slider_bottom_icons">
+                        <!--                        <app-status-bar></app-status-bar>-->
+                    </div>
+                </div>
+            </div>
+            <div class="news-block carusel-block">
+
+                <div class="item">
+                    <div class="content_block">
+                        <div class="blocks_filter">
+                            <div class="text-block">
+                                <div class="description">
+                                    <h5 class="title">
+                                        <!-- POLITICS, BUSINESS-->
+                                    </h5>
+                                    <p class="text">
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="all" id="allPosts">
+
+                            <!-- Selected vote category -->
+<!--                            <div *ngIf="selectedFilter.vote!=='All'" class="selectedVoteCategory">-->
+<!--                                <small class>Voting category:</small>-->
+<!--                                <span>{{selectedFilter.vote}}</span>-->
+<!--                            </div>-->
+                            <div class="loop_items item posts_items"
+                                 *ngFor="let single of filteredPosts.news| searchNews: searchTerm;let ind = index">
+                                <!--                                 infiniteScroll-->
+                                <!--                                 [infiniteScrollDistance]="2"-->
+                                <!--                                 [infiniteScrollThrottle]="50"-->
+                                <!--                                 (scrolled)="onIntersection($event, ind)"-->
+                                <div class="post_wrapper">
+                                    <div class="user_posts">
+                                        <div class="userName">
+                                            <div>
+                                                <h3 *ngIf="single.creator"><span>Posted by</span>{{single.creator.name}}
+                                                </h3>
+                                                <p class="updateDate"
+                                                   [matTooltip]="single.createdAt|formattedDate">{{single.createdAt|formattedDate:false}}</p>
+                                            </div>
+                                            <!--                                            <app-story-options [single]="single"></app-story-options>-->
+                                        </div>
+                                    </div>
+                                    <div class="short_desc">
+                                        <!--<a href="{{single.link}}">{{single.link}}</a>-->
+                                        <!--                                <small>{{single.description|stripTags}}</small>-->
+                                    </div>
+
+                                    <div class="img-block">
+                                        <a href="{{single.link}}" (click)="incrementViews(single)" target="_blank">
+                                            <img src="{{single.extractedImage}}" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="text-block">
+                                        <a href="{{single.link}}" class="text_block_link" target="_blank"
+                                           (click)="incrementViews(single)">
+                                            <h5 class="news_link">{{single.link|getUrlBase}}</h5>
+                                            <h3 class="news_title">{{single.extractedTitle}}</h3>
+                                            <p class="news_desc">{{single.extractedDescription}}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--                                <app-status-bar [single]="single"></app-status-bar>-->
+                            </div>
+
+                        </div>
+<!--                    </div>-->
+
+
+                    <div class="policy_item media_sidebar">
+                        <div class="s1m7ksmt-4 iQweaf s12j7ec3-0 dpUElj" data-redditstyle="false">
+                            <div class="_3RPJ8hHnfFohktLZca18J6">
+                                <div class="s1m7ksmt-0 drEVnI">
+                                    <div class="s3m0u52-0 bdzHTz">
+                                        <div>
+                                            <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['about'])">What
+                                                is it
+                                                all about?</a>
+                                            <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Content
+                                                policy</a>
+                                            <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Privacy
+                                                Policy</a>
+                                            <a class="s1m7ksmt-1 ebuWXQ" routerLink="">Terms</a>
+                                        </div>
+                                    </div>
+                                    <div class="s3m0u52-0 bdzHTz">
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="s1m7ksmt-2 jMwzIF">
+                                    <div>© 2019 Not the Headlines Ltd, All rights reserved</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    </section>
+    <!--            <div class="pagination-block">-->
+    <!--                <ul>-->
+    <!--                    <li *ngFor="let paginateSingle of pages">-->
+    <!--                        <a data-id="{{paginateSingle}}" (click)="nextPage($event)">{{ paginateSingle }}</a>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        <app-aside class="section_right" style="padding-left: 37px"></app-aside>-->
+</div>
+</div>

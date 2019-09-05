@@ -15,7 +15,7 @@ export class PostsService {
     }
 
     getPostsByCategory(category) {
-        return this.http.get(`${API_URL}/api/user/news/${this.checkAuth()}category/${category}?pagesize=30&page=1`);
+        return this.http.get(`${API_URL}/api/news/${this.checkAuth()}category/${category}?pagesize=30&page=1`);
     }
 
     checkAuth() {

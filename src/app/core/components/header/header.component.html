@@ -181,7 +181,6 @@
                                 <i class="fas fa-bars"></i>
                             </div>
                             <ul class="toggle none-768" *ngIf="postCategory">
-                                {{postCategory|json}}
                                 <li *ngFor="let section of sections"
                                     [class.active]="router.url===section.route || postCategory.dbName === section.dbName"
                                     routerLinkActive="active" [matTooltip]="section.tooltip">

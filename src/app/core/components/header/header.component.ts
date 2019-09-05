@@ -82,7 +82,6 @@ export class HeaderComponent implements OnInit {
 
 
         this.route.data.subscribe(dt => {
-            console.log(dt)
             if (dt.hasOwnProperty('search')) {
                 this.searchAllowed = dt.search;
             }

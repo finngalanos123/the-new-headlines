@@ -11,9 +11,11 @@ import {SubjectService} from '../../core/services/subject.service';
 })
 export class PostsComponent implements OnInit {
     selectedSection;
+    posts;
+    filteredPosts: any = {news: []};
 
     constructor(
-        private posts: PostsService,
+        private postsService: PostsService,
         public router: Router,
         private subject: SubjectService
     ) {
@@ -24,15 +26,24 @@ export class PostsComponent implements OnInit {
 
         this.subject.getPostCategory().subscribe(category => {
             this.selectedSection = category;
+            this.getPosts();
         });
 
-        if (this.selectedSection) {
-            this.posts.getPostsByCategory(this.selectedSection).subscribe();
-        }
+        this.getPosts();
+
     }
 
     getCategory() {
         this.selectedSection = GetCategory.get(this.router.url);
+    }
+
+    getPosts() {
+        if (this.selectedSection) {
+            this.postsService.getPostsByCategory(this.selectedSection.dbName).subscribe((data: any) => {
+                this.posts = data;
+                this.filteredPosts.news = data.news;
+            });
+        }
     }
 
 }
