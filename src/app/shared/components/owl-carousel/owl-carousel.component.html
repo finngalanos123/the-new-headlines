@@ -1,0 +1,31 @@
+<owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let post of posts.news">
+        <ng-template carouselSlide>
+            <div class="carousel_top_text" style="display: flex">
+                <div class="titleContainer">
+
+                    <h5>{{post.extractedTitle}}</h5>
+                    <p class="postLink">{{post.link|getUrlBase}}</p>
+                </div>
+                <div class="commentsContainer">
+                    <span [hidden]="hiddenComments()">{{post.comments}} Comments</span>
+                    <span [hidden]="hiddenCritics()">{{post.questions}} Critics</span>
+                    <span [hidden]="hiddenQuestions()">{{post.questions}} Questions</span>
+                    <span [hidden]="hiddenFeedback()">{{post.questions}} Feedback</span>
+                </div>
+            </div>
+            <div class="block_content">
+                <img class="d-block w-100" [src]="post.extractedImage" alt="first slide">
+                <div class="opacity-dark">
+                    <div class="white">
+                        <h5 class="title slider">{{post.extractedTitle}}</h5>
+                        <p class="text slider">{{post.extractedDescription}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </ng-template>
+    </ng-container>
+</owl-carousel-o>
+
+

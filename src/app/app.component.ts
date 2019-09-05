@@ -9,7 +9,7 @@ import IsResponsive from './core/helpers/is-responsive';
 })
 export class AppComponent {
     title = 'New Headlines';
-
+    isResponsive = IsResponsive;
     constructor(
         public router: Router,
     ) {

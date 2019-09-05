@@ -1,6 +1,6 @@
 <app-not-found *ngIf="!selectedSection"></app-not-found>
 
-<div class="content">
+<div class="content" *ngIf="selectedSection">
     <div class="main row no-gutters">
         <div class="Tools_headline">Politics & Business</div>
         <section class="section_carousel"
@@ -8,7 +8,8 @@
             <div class="Tools_headline2">Headlines chosen by readers</div>
             <div class="carusel-block" id="home_carousel">
 
-                <!--                <app-owl-carousel [posts]="posts"></app-owl-carousel>-->
+                <!--                                {{posts.news|json}}-->
+                <app-owl-carousel [posts]="posts" *ngIf="posts.news && posts.news.length > 0"></app-owl-carousel>
                 <div class="img-block">
                     <div class="slider_bottom_icons">
                         <app-status-bar></app-status-bar>
@@ -126,6 +127,6 @@
         <!--                    </li>-->
         <!--                </ul>-->
         <!--            </div>-->
-        <!--        <app-aside class="section_right" style="padding-left: 37px"></app-aside>-->
+        <app-aside class="section_right" style="padding-left: 37px"></app-aside>
     </div>
 </div>

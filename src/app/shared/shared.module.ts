@@ -14,6 +14,9 @@ import {ReportComponent} from './components/report/report.component';
 import {ShareButtonModule} from '@ngx-share/button';
 import {ShareButtonsModule} from '@ngx-share/buttons';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {OwlCarouselComponent} from './components/owl-carousel/owl-carousel.component';
+import {CarouselModule} from 'ngx-owl-carousel-o';
+import {AsideComponent} from './components/aside/aside.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +29,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
         CountPostScorePipe,
         PostOptionsComponent,
         ReportComponent,
+        OwlCarouselComponent,
+        AsideComponent,
     ],
     imports: [
         CommonModule,
@@ -36,7 +41,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
         ShareButtonsModule.withConfig({
             debug: true
         }),
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        CarouselModule
     ],
     exports: [
         FormsModule,
@@ -44,12 +50,15 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
         MaterialModule,
         InfiniteScrollModule,
         ShareButtonModule,
+        CarouselModule,
         NotFoundComponent,
         SearchNewsPipe,
         GetPostDateFormattedPipe,
         GetUrlBasePipe,
         StatusBarComponent,
-        PostOptionsComponent
+        PostOptionsComponent,
+        OwlCarouselComponent,
+        AsideComponent
     ]
 })
 export class SharedModule {

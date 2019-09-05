@@ -1,3 +1,7 @@
-<p>
-  footer works!
-</p>
+<footer class="footer">
+    <div class="copyright-block">
+    <span *ngIf="showCookieMsg()">We use cookies to collect website performance, usage data for analytics and ad customization
+            <a class="learn_more" (click)="learnMore()">Learn more</a>   <button (click)="accept()"> <i
+                class="fa fa-check"></i><strong>Accept Cookies</strong></button></span>
+    </div>
+</footer>

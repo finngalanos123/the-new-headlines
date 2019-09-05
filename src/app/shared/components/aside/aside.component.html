@@ -1,0 +1,102 @@
+<aside>
+  <div class="sidebar">
+    <div class="top-news">
+      <h4 class="title text-center">Today’s top</h4>
+      <!--            <mat-tab-group>-->
+      <!--                <mat-tab>-->
+      <!--                    <ng-template mat-tab-label>-->
+      <mat-label class="headlinesLabel">
+        Scorers
+      </mat-label>
+      <!--                    </ng-template>-->
+      <ul class="todaysTopList">
+
+        <li class="item" *ngFor="let single of filteredPosts.news">
+          <div class="img-block">
+            <img *ngIf="single.extractedImage"
+                 src="{{single.extractedImage}}"
+                 class="img-fluid" alt="">
+            <img *ngIf="!single.extractedImage" src="../../../assets/images/no-image.png">
+
+          </div>
+          <div class="text-block">
+            <h5 class="title" (click)="getSingle(single.link)">{{single.extractedTitle}}</h5>
+            <p class="description">{{strip_tags(single.extractedDescription)}}</p>
+            <span class="date">{{single.created_date}}</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="paginatorContainer">
+        <mat-paginator class="topNewsPaginator" *ngIf="posts.news" (page)="handle($event)" #paginator
+                       [length]="getLength(posts.news| searchNews: searchTerm)"
+                       [pageSize]="defaultRecords" [hidePageSize]="true"
+                       [pageSizeOptions]="[2,5,10,25,100]">
+        </mat-paginator>
+      </div>
+
+      <!--                    <div class="show-more">-->
+      <!--                        <span class=" active">Show more</span>-->
+      <!--                    </div>-->
+      <!--                </mat-tab>-->
+      <!--                <mat-tab>-->
+      <!--                    <ng-template mat-tab-label>-->
+      <!--                        <mat-label>Questions</mat-label>-->
+      <!--                    </ng-template>-->
+      <!--                    <ul>-->
+      <!--                        <li class="item" *ngFor="let singleLastet of filteredPosts.news">-->
+      <!--                            <div class="img-block">-->
+      <!--                                <img *ngIf="singleLastet.img" src="../../../assets/images/{{singleLastet.img}}"-->
+      <!--                                     class="img-fluid" alt="">-->
+      <!--                            </div>-->
+      <!--                            <div class="text-block">-->
+      <!--                                <h5 class="title" (click)="getSingle(singleLastet.link)">{{singleLastet.title}}</h5>-->
+      <!--                                <p class="description">{{singleLastet.description|stripTags}}</p>-->
+      <!--                                <span class="date">{{singleLastet.created_date}}</span>-->
+      <!--                            </div>-->
+      <!--                        </li>-->
+      <!--                    </ul>-->
+
+      <!--                    <div class="paginatorContainer">-->
+      <!--                        <mat-paginator class="topNewsPaginator" *ngIf="posts.news" (page)="handle($event)" #paginator-->
+      <!--                                       [length]="getLength(posts.news| searchNews: searchTerm)"-->
+      <!--                                       [pageSize]="defaultRecords" [hidePageSize]="true"-->
+      <!--                                       [pageSizeOptions]="[2,5,10,25,100]">-->
+      <!--                        </mat-paginator>-->
+      <!--                    </div>-->
+
+      <!--&lt;!&ndash;                    <div class="show-more">&ndash;&gt;-->
+      <!--&lt;!&ndash;                        <span class=" active">Show more</span>&ndash;&gt;-->
+      <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+      <!--                </mat-tab>-->
+      <!--            </mat-tab-group>-->
+    </div>
+  </div>
+
+  <div class="sidebar policy">
+    <div class="s1m7ksmt-4 iQweaf s12j7ec3-0 dpUElj" data-redditstyle="false">
+      <div class="_3RPJ8hHnfFohktLZca18J6">
+        <div class="s1m7ksmt-0 drEVnI">
+          <div class="s3m0u52-0 bdzHTz">
+            <div>
+              <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['about'])">What is it all about?</a>
+              <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Content policy</a>
+              <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['policy'])">Privacy Policy</a>
+              <a class="s1m7ksmt-1 ebuWXQ" (click)="router.navigate(['terms'])">Terms</a>
+            </div>
+          </div>
+          <div class="s3m0u52-0 bdzHTz">
+            <div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="s1m7ksmt-2 jMwzIF">
+          <div>© 2019 Not the Headlines Ltd, All rights reserved</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+

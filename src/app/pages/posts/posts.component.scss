@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+}
+
+.short_desc {
+  small {
+    letter-spacing: 1px;
+  }
+}
+
+@media(max-width: 480px) {
+  .commentsContainer span:nth-child(2) {
+    margin-left: 15px !important;
+  }
+}

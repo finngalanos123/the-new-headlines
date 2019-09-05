@@ -9,8 +9,8 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 //@import "~dropzone/dist/min/dropzone.min.css";
 //@import "~primeng/resources/primeng.min.css";
-//@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
-//@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 // regular style toast
 @import '~ngx-toastr/toastr';
 //// ngx-share buttons styles
@@ -114,7 +114,7 @@ img {
 .main {
   justify-content: space-between;
   padding-bottom: 100px;
-  padding-top: 14%;
+  //padding-top: 14%;
   padding-left: 16px;
 }
 
@@ -185,14 +185,14 @@ img {
   position: absolute;
   //top: 0;
   left: 0;
-  width: 100%;
+  width: 98%;
   height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   color: white;
   margin: 0 auto;
-  padding: 0 50px 50px;
+  padding: 0 12px 50px;
 }
 
 .slider_bottom_icons {
@@ -1029,7 +1029,7 @@ a {
 }
 
 .copyright-block {
-  border-top: 1px solid #e1e1e1;
+  //border-top: 1px solid #e1e1e1;
   margin-top: 17px;
 
   span {
@@ -2521,7 +2521,7 @@ header[_ngcontent-pqf-c2] .navbar[_ngcontent-pqf-c2] .logo[_ngcontent-pqf-c2] ul
 }
 
 .section_carousel {
-  width: 65%;
+  width: 64%;
 }
 
 .section_right {

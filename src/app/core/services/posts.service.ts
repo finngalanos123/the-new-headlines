@@ -22,6 +22,10 @@ export class PostsService {
         return this.http.get(`${API_URL}/api/news/${this.checkAuth()}category/${category}?pagesize=30&page=${page}`);
     }
 
+    getTopNews(category) {
+        return this.http.get(`${API_URL}/api/news/${this.checkAuth()}category/${category}?pagesize=10&page=1&filter=Score`);
+    }
+
     checkAuth() {
         return this.auth.loggedIn() ? 'user/voted/' : '';
     }

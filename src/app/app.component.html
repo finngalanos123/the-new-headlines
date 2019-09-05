@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container [hasBackdrop]="isResponsive.check()">
     <mat-sidenav [opened]="router.url.includes('admin')" #sidenav [mode]="getSidenavMode()">
         <app-sidebar (closeSidebar)="sidenav.toggle()"></app-sidebar>
     </mat-sidenav>
