@@ -1,4 +1,11 @@
-.notFoundMsg{
-  color: silver;
-  font-weight: unset;
+.notFound {
+  position: absolute;
+  top: 183px;
+  text-align: center;
+  width: 100%;
+
+  .notFoundMsg {
+    color: silver;
+    font-weight: unset;
+  }
 }

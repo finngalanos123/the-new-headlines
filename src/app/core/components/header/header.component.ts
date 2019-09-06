@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
     @HostListener('window:scroll', ['$event'])
     private onScroll(e: Event): void {
         this.scrollPosition = window.pageYOffset;
+        console.log(this.scrollPosition)
 
         this.showScrollToTopBtn = window.pageYOffset > 1800;
     }
@@ -195,9 +196,4 @@ export class HeaderComponent implements OnInit {
         //   console.log('The dialog was closed');
         // });
     }
-
-    scrollToTop() {
-        ScrollUp.do();
-    }
-
 }

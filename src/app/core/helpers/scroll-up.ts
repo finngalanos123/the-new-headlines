@@ -10,7 +10,8 @@ export default class ScrollUp {
             });
         } else {
             let container = document.querySelector('.navbar');
-            container.scrollIntoView({block: 'start', behavior: 'smooth'});
+            // container.scrollIntoView({block: 'start', behavior: 'smooth'});
+            // window.scrollTo({top: 550, behavior: 'smooth'});
         }
     }
 }

@@ -88,6 +88,11 @@ img {
 
 header {
   margin-bottom: 100px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 
   .navbar {
     position: relative;
@@ -1121,9 +1126,11 @@ li.margin_top {
 .header_feedback {
   display: none;
 }
+
 .categories_text {
   display: none;
 }
+
 @media screen and (max-width: 1480px) {
   header .menu ul {
     padding: 0 17px;
@@ -1180,6 +1187,7 @@ li.margin_top {
     padding-left: 10px;
   }
 }
+
 @media screen and (max-width: 580px) {
   .mobile_user_info ul li a {
     font-size: 13px;

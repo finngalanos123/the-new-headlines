@@ -16,6 +16,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {RequestInterceptor} from './helpers/http.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import {CountPostScorePipe} from '../shared/pipes/count-post-score.pipe';
+import {ScrollToModule} from 'ng2-scroll-to';
 
 // Token getter for JWT module
 export function tokenGetter() {
@@ -37,6 +38,7 @@ export function tokenGetter() {
         RouterModule,
         HttpClientModule,
         FlexLayoutModule,
+        ScrollToModule.forRoot(),
         JwtModule.forRoot({
             config: {
                 tokenGetter,
