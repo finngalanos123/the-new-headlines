@@ -16,7 +16,7 @@ export class ListComponent implements OnInit, OnDestroy {
     posts: any = [];
     page = 1;
     filteredPosts: any = {news: []};
-    subscriptions: Subscription[];
+    subscriptions: Subscription[] = [];
 
     constructor(
         private postsService: PostsService,
