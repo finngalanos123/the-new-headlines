@@ -19,6 +19,7 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import {AsideComponent} from './components/aside/aside.component';
 import {CapitalizePipe} from './pipes/capitalize.pipe';
 import {StripHtmlTagsPipe} from './pipes/strip-html-tags.pipe';
+import { HttpClientJsonpModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import {StripHtmlTagsPipe} from './pipes/strip-html-tags.pipe';
         ReactiveFormsModule,
         MaterialModule,
         ShareButtonModule,
+        HttpClientJsonpModule, 
         ShareButtonsModule.withConfig({
             debug: true
         }),
