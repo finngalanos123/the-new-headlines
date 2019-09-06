@@ -17,6 +17,7 @@ import {RequestInterceptor} from './helpers/http.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import {CountPostScorePipe} from '../shared/pipes/count-post-score.pipe';
 import {ScrollToModule} from 'ng2-scroll-to';
+import {CapitalizePipe} from '../shared/pipes/capitalize.pipe';
 
 // Token getter for JWT module
 export function tokenGetter() {
@@ -56,7 +57,8 @@ export function tokenGetter() {
             multi: true
         },
         CookieService,
-        CountPostScorePipe
+        CountPostScorePipe,
+        CapitalizePipe
     ],
     exports: [
         HeaderComponent,

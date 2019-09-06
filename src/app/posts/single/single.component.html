@@ -1,0 +1,201 @@
+<div class="content">
+    <div class="main row">
+        <section class="col-md-8" style="padding-right: 37px">
+            <div class="single_blog_post">
+                <div class="post_title_and_desc" *ngIf="singlePost">
+                    <h3>{{singlePost.extractedTitle}}</h3>
+                    <span class="source"> {{singlePost.link|getUrlBase}}</span>
+                    <small class="desc">{{singlePost.description|stripTags}}</small>
+                    <div class="post_image">
+                        <a [href]="singlePost.link">
+                            <img src="{{singlePost.extractedImage}}" alt="" class="postImage">
+                        </a>
+                        <!--                        <div class="play">-->
+                        <!--                            <i class="far fa-play-circle"></i>-->
+                        <!--                        </div>-->
+                    </div>
+                    <p>{{singlePost.extractedDescription}}</p>
+                </div>
+                <div class="buttons_add">
+                    <app-status-bar [single]="singlePost"
+                                    *ngIf="singlePost && singlePost.hasOwnProperty('video')"></app-status-bar>
+                    <app-post-options [single]="singlePost" [singlePostPage]="true"></app-post-options>
+                </div>
+
+                <div class="leave_comment" *ngIf="auth.loggedIn()">
+                    <div class="commented_by" *ngIf="auth.loggedIn() && userData && userData.fullName">
+                        <p>Add as <span>{{userData.fullName}}</span>
+                    </div>
+                    <div class="border" *ngIf="auth.loggedIn()">
+                        <form [formGroup]="postForm" class="postCommentsForm">
+                            <textarea formControlName="text" (keypress)="onEditorChange($event)"></textarea>
+                            <div class="comments_or_question">
+                                <div>
+                                    <small>If it is a question please put a question mark (?) or else it will be treated
+                                        as a comment
+                                    </small>
+                                </div>
+                                <div class="checkboxContainer">
+                                    <mat-checkbox [checked]="postOnEnter" color="primary"
+                                                  (change)="postOnEnter = !postOnEnter">
+                                        <small class="enterHint">Send on "Enter"</small>
+                                    </mat-checkbox>
+                                </div>
+
+                                <div class="postBtnContainer">
+                                    <button type="button" class="post_btn" [hidden]="postOnEnter"
+                                            (click)="addComments()">Post
+                                    </button>
+                                </div>
+                            </div>
+                            <!--                            <div *ngIf="postForm.get('text').hasError('required') && postForm.get('text').touched">-->
+                            <!--                                Comment is required-->
+                            <!--                            </div>-->
+                        </form>
+                    </div>
+                    <div class="how_many_com_and_quest" *ngIf="selectedCommentType">
+                        <p (click)="changeCommentType('Question')" *ngIf="singlePost.category === 'StyleAndSweat'"
+                           [class.selected]="selectedCommentType === 'Question'">
+                            Critics
+                            <small>({{getCommentsLen('Question')}})</small>
+                        </p>
+
+                        <p (click)="changeCommentType('Comment')" [class.selected]="selectedCommentType === 'Comment'">
+                            {{singlePost.category !== 'JumpStartups' ? 'Comments' : 'Feedback'}}
+                            <small>({{getCommentsLen('Comment')}})</small>
+                        </p>
+                        <p (click)="changeCommentType('Question')" [class.selected]="selectedCommentType === 'Question'"
+                           *ngIf="singlePost.category!=='HumanStories' && singlePost.category!=='LoveDesigns'&&singlePost.category!=='StyleAndSweat'">
+                            Questions
+                            <small>({{getCommentsLen('Question')}})</small>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="comments">
+                    <ng-container *ngIf="auth.loggedIn()">
+                        <ng-container *ngFor="let comment of filteredComments;let ind = index">
+                            <ng-template [ngTemplateOutlet]="commentTmpl"
+                                         [ngTemplateOutletContext]="{c: comment, t: selectedCommentType}"></ng-template>
+                        </ng-container>
+                    </ng-container>
+
+                    <!-- Comment template -->
+                    <ng-template #commentTmpl let-comment="c" let-commentType="t">
+                        <div>
+                            <div class="flex_cont">
+
+                                <!-- Comment author and date -->
+                                <div>
+                                    <strong class="author">{{comment.creator.name ? comment.creator.name : 'n/a'}}</strong>
+                                    <small class="date">{{comment.createdAt|formattedDate:false}}</small>
+                                </div>
+
+                                <!-- Menu toggle button -->
+                                <button mat-icon-button (click)="toggleDiv(comment,button)"
+                                        [hidden]="comment.creator.name !== userData.fullName"
+                                        aria-label="Example icon-button with a menu">
+                                    <mat-icon #button>more_vert</mat-icon>
+                                </button>
+                            </div>
+
+                            <!-- Edit & remove buttons menu -->
+                            <div *ngIf="show && selectedToggleBtn === button"
+                                 class="comment_action" #share>
+                                <button mat-menu-item (click)="editComment(comment)">
+                                    <mat-icon>edit</mat-icon>
+                                    <span>Edit</span>
+                                </button>
+                                <button mat-menu-item (click)="removeComment(comment._id)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Remove</span>
+                                </button>
+                            </div>
+
+                            <!-- Comment text with edit input for it -->
+                            <div class="commentContainer">
+                                <p class="comment"
+                                   *ngIf="!commentEditing || selectedComment!== comment">{{comment.text}}</p>
+                                <form *ngIf="commentEditing && selectedComment=== comment"
+                                      [formGroup]="commentEditForm">
+                                    <input formControlName="text" (keyup.enter)="updateComment()">
+                                    <button mat-icon-button (click)="updateComment()" [matTooltip]="'update comment'">
+                                        <mat-icon>done</mat-icon>
+                                    </button>
+                                    <button mat-icon-button (click)="commentEditing = false"
+                                            [matTooltip]="'cancel comment updating'">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                </form>
+                                <div>
+                                </div>
+                            </div>
+
+                            <!--Comment actions-->
+                            <div class="actions">
+                                <small (click)="likeComment(comment._id,comment.userLiked)">
+                                    <i class="fa fa-thumbs-up" [class.selected]="comment.userLiked"></i>
+                                    <small>{{comment.totalLikes}}</small>
+                                </small>
+                                <small (click)="toggleReplyInput(comment)" [hidden]="true"> Reply</small>
+                                <small (click)="reportComment(comment)"
+                                       [hidden]="userData.userId===comment.creator._id"> Report
+                                </small>
+                            </div>
+
+                            <div class="replyContainer" *ngIf="showReplyInput && selectedComment===comment">
+                                <input (keyup.enter)="replyComment()">
+                            </div>
+                        </div>
+
+
+                    </ng-template>
+                </div>
+            </div>
+        </section>
+        <div class="col-md-4 rules">
+
+            <ng-container *ngIf="postCategory!=='StyleAndSweat'">
+
+                <h3>Comments and Questions</h3>
+
+                <p>Readers are encouraged to post comments and questions in response to other users’ posts. Please make
+                    your
+                    questions and comments relevant to the post and ones which don’t contravene the spirit of the site.
+
+                </p>
+                <p>
+                    Users should not use the Questions and Comments section as a forum for arguments, personal comments
+                    or
+                    inappropriate language of any kind.
+                </p>
+                <p>
+                    Comments and questions should be short, simple, straightforward and related to the original post.
+                    Any
+                    reported comments or questions will be monitored and deleted if necessary.
+                </p>
+            </ng-container>
+
+            <ng-container *ngIf="postCategory==='StyleAndSweat'">
+
+                <h3>Criticism</h3>
+
+                <p>Any criticism posted should be logical, factual, positive and constructive.</p>
+
+                <p>Negative criticism will be acceptable if it is voicing a genuine objection to a post, with the sole
+                    purpose of showing that it is wrong, false, mistaken, nonsensical, objectionable or
+                    disreputable.</p>
+
+                <p>Users should not use the Criticism section as a forum for arguments, personal comments or
+                    inappropriate language of any kind. Any criticism should be brief, constructive and related to the
+                    original post. Any reported comments or criticism will be monitored and deleted if necessary.</p>
+
+            </ng-container>
+        </div>
+    </div>
+
+
+</div>

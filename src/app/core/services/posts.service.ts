@@ -46,4 +46,22 @@ export class PostsService {
         }
         return this.http.post(`${API_URL}/api/news/${post._id}/views`, {uniqueId: user.userId});
     }
+
+    getLikesCount(id) {
+        return this.http.get(`${API_URL}/api/comments/${id}/likeunlike`);
+    }
+
+    getSinglePost(id) {
+        return this.http.get(`${API_URL}/api/news/${id}/votedetails`);
+    }
+
+    getPostVotes(id) {
+        return this.http.get(`${API_URL}/api/news/${id}/vote`);
+    }
+
+
+
+    getCommentsForPost(id) {
+        return this.http.get(`${API_URL}/api/news/${id}/comments/?pagesize=100&page=1`);
+    }
 }

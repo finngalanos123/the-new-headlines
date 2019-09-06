@@ -5,11 +5,11 @@ import {NotFoundComponent} from './shared/components/not-found/not-found.compone
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'pages',
+        redirectTo: 'posts/home',
         pathMatch: 'full'
     },
     {
-        path: 'pages', loadChildren: './pages/pages.module#PagesModule'
+        path: 'posts', loadChildren: './posts/posts.module#PostsModule'
     },
     {
         path: 'admin', loadChildren: './admin/admin.module#AdminModule'

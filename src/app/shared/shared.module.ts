@@ -17,6 +17,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {OwlCarouselComponent} from './components/owl-carousel/owl-carousel.component';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {AsideComponent} from './components/aside/aside.component';
+import {CapitalizePipe} from './pipes/capitalize.pipe';
+import {StripHtmlTagsPipe} from './pipes/strip-html-tags.pipe';
 
 @NgModule({
     declarations: [
@@ -31,6 +33,8 @@ import {AsideComponent} from './components/aside/aside.component';
         ReportComponent,
         OwlCarouselComponent,
         AsideComponent,
+        CapitalizePipe,
+        StripHtmlTagsPipe,
     ],
     imports: [
         CommonModule,
@@ -55,6 +59,7 @@ import {AsideComponent} from './components/aside/aside.component';
         SearchNewsPipe,
         GetPostDateFormattedPipe,
         GetUrlBasePipe,
+        StripHtmlTagsPipe,
         StatusBarComponent,
         PostOptionsComponent,
         OwlCarouselComponent,

@@ -8,7 +8,6 @@
             <div class="Tools_headline2">Headlines chosen by readers</div>
             <div class="carusel-block" id="home_carousel">
 
-                <!--                                {{posts.news|json}}-->
                 <app-owl-carousel [posts]="posts" *ngIf="posts.news && posts.news.length > 0"></app-owl-carousel>
                 <div class="img-block">
                     <div class="slider_bottom_icons">
@@ -120,13 +119,6 @@
                 </div>
             </div>
         </section>
-        <!--            <div class="pagination-block">-->
-        <!--                <ul>-->
-        <!--                    <li *ngFor="let paginateSingle of pages">-->
-        <!--                        <a data-id="{{paginateSingle}}" (click)="nextPage($event)">{{ paginateSingle }}</a>-->
-        <!--                    </li>-->
-        <!--                </ul>-->
-        <!--            </div>-->
         <app-aside class="section_right" style="padding-left: 37px"></app-aside>
     </div>
 </div>

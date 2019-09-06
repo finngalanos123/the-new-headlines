@@ -162,7 +162,7 @@ export class HeaderComponent implements OnInit {
 
             const c = confirm('Are you sure you want to discard the post?');
             if (c) {
-                this.router.navigate([`pages/${link}`]);
+                this.router.navigate([`posts/${link}`]);
             } else {
                 this.router.navigate(['/add-post']);
             }
@@ -170,7 +170,7 @@ export class HeaderComponent implements OnInit {
             return false;
         } else {
 
-            this.router.navigate([`pages/${link}`]);
+            this.router.navigate([`posts/${link}`]);
             window.scrollTo(0, 0);
             return true;
         }
