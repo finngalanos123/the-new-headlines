@@ -37,7 +37,7 @@ body {
   //line-height: 1;
   width: 100%;
   font-size: 14px;
-  letter-spacing: 3px;
+  //letter-spacing: 3px;
   margin: unset;
   position: relative;
   //background: #eee !important;
@@ -116,6 +116,10 @@ img {
   padding-bottom: 100px;
   //padding-top: 14%;
   padding-left: 16px;
+}
+
+.mat-select-trigger {
+  margin-top: 8px !important;
 }
 
 

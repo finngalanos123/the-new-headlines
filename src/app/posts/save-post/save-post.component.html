@@ -1,0 +1,135 @@
+<div class="content">
+    <form action="" [formGroup]="postForm">
+        <div class="post_content">
+            <div class="row main">
+                <!--                <div class="col-md-12">-->
+                <!--                    <div class="profile_container">-->
+
+                <div class="post_details">
+                    <div class="posts_box">
+                        <div class="sub_headline post_a_link">
+                            <h2> Post a link </h2>
+                            <mat-form-field>
+                                <mat-select formControlName="category"
+                                            (selectionChange)="getCurrentSection($event.value)">
+                                    <mat-option disabled [value]="0">Choose a Section</mat-option>
+                                    <mat-option *ngFor="let c of categories" [value]="c.dbName">
+                                        {{c.name}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="postForm.get('category').hasError('required')">Section name is
+                                    required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="choose_pic_or_link">
+                            <mat-tab-group mat-align-tabs="start" [selectedIndex]="1">
+                                <!--<mat-tab label="Choose a picture">-->
+                                <!--<dropzone class="dropzone" (error)="onUploadError($event)"-->
+                                <!--(addedFile)="onUploadSuccess($event)"-->
+                                <!--*ngIf="type === 'component'" [disabled]="disabled"-->
+                                <!--[message]="'Click or drag images here to upload'"-->
+                                <!--(init)="onUploadInit($event)"></dropzone>-->
+                                <!--<div *ngIf="type === 'directive'" class="dropzone dropzone-container"-->
+                                <!--(init)="onUploadInit($event)" (error)="onUploadError($event)"-->
+                                <!--(success)="onUploadSuccess($event)"></div>-->
+                                <!--&lt;!&ndash;<mat-error&ndash;&gt;-->
+                                <!--&lt;!&ndash;*ngIf="postForm.get('description').dirty && postForm.get('description').hasError('required')">&ndash;&gt;-->
+                                <!--&lt;!&ndash;Post&ndash;&gt;-->
+                                <!--&lt;!&ndash;description is required&ndash;&gt;-->
+                                <!--&lt;!&ndash;</mat-error>&ndash;&gt;-->
+                                <!--</mat-tab>-->
+                                <mat-tab label="Link">
+                                    <div class="link">
+                                        <h3>Link</h3>
+                                        <input type="text"
+                                               placeholder="http://www.nottheheadlines.com/news.html"
+                                               formControlName="link">
+                                        <mat-error *ngIf="postForm.get('link').hasError('required')">Link
+                                            is required
+                                        </mat-error>
+                                    </div>
+
+                                    <!--                                            <div class="description">-->
+                                    <!--                                                <h3>Description</h3>-->
+                                    <!--                                                <ckeditor formControlName="description"-->
+                                    <!--                                                          [config]="getToolbarConfig()" (change)="checkLength()">-->
+                                    <!--                                                    <ckbutton [name]="'saveButton'" [command]="'saveCmd'"-->
+                                    <!--                                                              [icon]="'save.png'"-->
+                                    <!--                                                              [label]="'Save Document'"-->
+                                    <!--                                                              [toolbar]="'clipboard,1'"></ckbutton>-->
+                                    <!--                                                </ckeditor>-->
+                                    <!--                                            </div>-->
+
+                                    <!--<mat-slide-toggle (change)="setVideo($event)">Video</mat-slide-toggle>-->
+                                </mat-tab>
+                            </mat-tab-group>
+
+                            <div class="post_or_cancel">
+                                <div>
+
+                                </div>
+                                <div>
+                                    <button mat-raised-button class="red cancelPost" (click)="cancelPosting()">
+                                        Cancel
+                                    </button>
+                                    <button mat-raised-button class="blue postBtn" (click)="upload_files()">
+                                        Post
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="post_suggestions">
+                    <h3>Suggestions</h3>
+
+                    <p>Please try to maintain the spirit of the site in anything that you post.</p>
+
+                    <!--<p>Please post links which are important, meaningful and interesting, and which could influence others in a positive way.</p>-->
+
+                    <p class="sugg_bold">Post your links in the relevant categories below:</p>
+                    <br>
+                    <ul>
+                        <li>
+                            Influence: <span>Politics, Business and other Influential news</span>
+                        </li>
+                        <li>
+                            Style and Sweat:
+                            <span>Movies, fashion, music, sport and other aspects of the arts. </span>
+                        </li>
+                        <li>
+                            Human Stories: <span>Uplifting and emotive human interest stories.</span>
+                        </li>
+                        <li>
+                            Jump Start-ups: <span>Start-up, new business and technology news.</span>
+                        </li>
+                        <li>
+                            Hobbyist: <span>A platform for bloggers and other hobbyists.</span>
+                        </li>
+                        <li>
+                            Love Designs:
+                            <span>Any design links relating to homes, fashion, technology, auto etc.</span>
+                        </li>
+                        <li>
+                            Science and Technology: <span>The latest in science and technology news.</span>
+                        </li>
+                        <li>
+                            Environment and Health:
+                            <span>Any news related to the environment and health issues.</span>
+                        </li>
+                        <li>
+                            Public: <span>General news</span>
+                        </li>
+                    </ul>
+                    <p>Duplicate links are not permitted.</p>
+                    <p class="sugg_blue">For more on posting links please see user <a href="">guidelines</a></p>
+                </div>
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </form>
+</div>

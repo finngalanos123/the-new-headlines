@@ -31,7 +31,7 @@
                     <li class="post" ng-class="{ active: isActive('/posts') }" fxShow.gt-lg [fxHide.sm]="true"
                         fxHide.xs="true">
                         <!--                        <a *ngIf="auth.loggedIn()" mat-button (click)="showAuthDialog()">post</a>-->
-                        <a *ngIf="auth.loggedIn() && router.url!=='/add-post'" routerLink="/add-post"
+                        <a *ngIf="auth.loggedIn() && router.url!=='posts/add'" routerLink="posts/add"
                            mat-button>post</a>
                     </li>
                     <li class="login" fxShow.gt-lg [fxHide.sm]="true" fxHide.xs="true">
@@ -86,7 +86,7 @@
                                                 <li class="post" ng-class="{ active: isActive('/posts') }">
                                                     <a *ngIf="!auth.loggedIn()" mat-button (click)="showAuthDialog()"><i
                                                             class="fas fa-link"></i></a>
-                                                    <a *ngIf="auth.loggedIn()" routerLink="/add-post" mat-button><i
+                                                    <a *ngIf="auth.loggedIn()" routerLink="/posts/add" mat-button><i
                                                             class="fas fa-link"></i></a>
                                                 </li>
                                                 <li class="header-notification" *ngIf="auth.loggedIn()">

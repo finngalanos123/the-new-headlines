@@ -59,9 +59,24 @@ export class PostsService {
         return this.http.get(`${API_URL}/api/news/${id}/vote`);
     }
 
-
-
     getCommentsForPost(id) {
         return this.http.get(`${API_URL}/api/news/${id}/comments/?pagesize=100&page=1`);
     }
+
+    getPost(id) {
+        return this.http.get(`${API_URL}/api/news/${id}`);
+    }
+
+    uploadPost(data) {
+        return this.http.post(`${API_URL}/api/news`, data);
+    }
+
+    update(id, data) {
+        return this.http.put(API_URL + '/api/news/' + id, data);
+    }
+
+    remove(id) {
+        return this.http.delete(API_URL + '/api/news/' + id);
+    }
+
 }

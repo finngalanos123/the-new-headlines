@@ -25,7 +25,7 @@ export class ListComponent implements OnInit, OnDestroy {
     ) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getCategory();
 
         this.subscriptions.push(this.subject.getPostCategory().subscribe(category => {
@@ -78,7 +78,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscriptions.forEach(s => s.unsubscribe());
     }
 
