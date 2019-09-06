@@ -1,10 +1,10 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../core/services/auth.service';
+import {AuthService} from '@core/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PostsService} from '../../core/services/posts.service';
+import {PostsService} from '@core/services/posts.service';
 import {ToastrService} from 'ngx-toastr';
-import {MAIN_SECTIONS} from '../../core/constants/app.config';
+import {MAIN_SECTIONS} from '@core/constants/app.config';
 import {Subscription} from 'rxjs';
 
 @Component({

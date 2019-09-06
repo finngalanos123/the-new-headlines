@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '@core/services/auth.service';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {SubjectService} from '../../services/subject.service';
+import {SubjectService} from '@core/services/subject.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({

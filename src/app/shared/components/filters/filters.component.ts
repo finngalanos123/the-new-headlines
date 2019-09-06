@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import IsResponsive from '../../../core/helpers/is-responsive';
+import IsResponsive from '@core/helpers/is-responsive';
 
 @Component({
     selector: 'app-filters',

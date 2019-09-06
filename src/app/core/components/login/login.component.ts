@@ -1,10 +1,10 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '@core/services/auth.service';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterComponent} from '../register/register.component';
-import {SubjectService} from '../../services/subject.service';
+import {SubjectService} from '@core/services/subject.service';
 
 @Component({
     selector: 'app-login',

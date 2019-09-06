@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
 import {Router} from '@angular/router';
-import {SubjectService} from '../../../core/services/subject.service';
-import {AuthService} from '../../../core/services/auth.service';
-import {VOTE_TYPES} from '../../../core/constants/app.config';
+import {SubjectService} from '@core/services/subject.service';
+import {AuthService} from '@core/services/auth.service';
+import {VOTE_TYPES} from '@core/constants/app.config';
 import * as JWTDecode from 'jwt-decode';
 import {ToastrService} from 'ngx-toastr';
-import {VotesService} from '../../../core/services/votes.service';
+import {VotesService} from '@core/services/votes.service';
 import {CookieService} from 'ngx-cookie-service';
 import {CountPostScorePipe} from '../../pipes/count-post-score.pipe';
-import {PostsService} from '../../../core/services/posts.service';
+import {PostsService} from '@core/services/posts.service';
 
 @Component({
     selector: 'app-status-bar',

@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material';
-import {SubjectService} from '../../../core/services/subject.service';
+import {SubjectService} from '@core/services/subject.service';
 import {Router} from '@angular/router';
-import {PostsService} from '../../../core/services/posts.service';
-import GetCategory from '../../../core/helpers/get-category';
+import {PostsService} from '@core/services/posts.service';
+import GetCategory from '@core/helpers/get-category';
+
 
 @Component({
     selector: 'app-aside',

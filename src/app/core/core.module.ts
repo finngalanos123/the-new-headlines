@@ -5,7 +5,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {throwIfAlreadyLoaded} from './guards/module-imports.guard';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
-import {SharedModule} from '../shared/shared.module';
+import {SharedModule} from '@shared/shared.module';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {MaterialModule} from './modules/material.module';
 import {RouterModule} from '@angular/router';
@@ -15,9 +15,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {RequestInterceptor} from './helpers/http.interceptor';
 import {CookieService} from 'ngx-cookie-service';
-import {CountPostScorePipe} from '../shared/pipes/count-post-score.pipe';
+import {CountPostScorePipe} from '@shared/pipes/count-post-score.pipe';
 import {ScrollToModule} from 'ng2-scroll-to';
-import {CapitalizePipe} from '../shared/pipes/capitalize.pipe';
+import {CapitalizePipe} from '@shared/pipes/capitalize.pipe';
 
 // Token getter for JWT module
 export function tokenGetter() {

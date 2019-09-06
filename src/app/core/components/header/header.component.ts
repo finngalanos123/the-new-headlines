@@ -1,16 +1,15 @@
 import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {MatDialog, MatMenuTrigger} from '@angular/material';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '@core/services/auth.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
-import {MAIN_SECTIONS} from '../../constants/app.config';
+import {MAIN_SECTIONS} from '@core/constants/app.config';
 import {LoginComponent} from '../login/login.component';
-import {SubjectService} from '../../services/subject.service';
+import {SubjectService} from '@core/services/subject.service';
 import {RegisterComponent} from '../register/register.component';
-import GetCategory from '../../helpers/get-category';
-import {Section} from '../../models/section';
+import GetCategory from '@core/helpers/get-category';
+import {Section} from '@core/models/section';
 import {filter} from 'rxjs/operators';
-import ScrollUp from '../../helpers/scroll-up';
 
 
 @Component({
