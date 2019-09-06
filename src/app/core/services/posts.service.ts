@@ -22,6 +22,14 @@ export class PostsService {
         return this.http.get(`${API_URL}/api/news/${this.checkAuth()}category/${category}?pagesize=30&page=${page}`);
     }
 
+    getPostsByVoteType(category, filter) {
+        if (filter.vote !== 'All') {
+            return this.http.get(`${API_URL}/api/news/${this.checkAuth()}category/${category}/vote/${filter.vote}?filter=${filter.type}&pagesize=30&page=1`);
+        } else {
+            return this.http.get(`${API_URL}/api/news/${this.checkAuth()}category/${category}?filter=${filter.type}&pagesize=30&page=1`);
+        }
+    }
+
     getTopNews(category) {
         return this.http.get(`${API_URL}/api/news/${this.checkAuth()}category/${category}?pagesize=10&page=1&filter=Score`);
     }

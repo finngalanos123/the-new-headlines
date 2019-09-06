@@ -79,7 +79,6 @@ export class SavePostComponent implements OnInit, OnDestroy {
     upload_files() {
 
         const selectedCategory = this.categories.filter(c => c['dbName'] === this.postForm.value['category']);
-        console.log(selectedCategory)
         let redirectUrl = '/';
         if (selectedCategory && selectedCategory.length > 0) {
             redirectUrl = 'posts/' + selectedCategory[0]['route'];

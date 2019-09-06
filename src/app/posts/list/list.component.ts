@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {SubjectService} from '../../core/services/subject.service';
 import GetCategory from '../../core/helpers/get-category';
 import {Subscription} from 'rxjs';
+import ScrollUp from '../../core/helpers/scroll-up';
 
 @Component({
     selector: 'app-list',
@@ -53,6 +54,16 @@ export class ListComponent implements OnInit, OnDestroy {
         }
     }
 
+    getFilteredPosts(filterData) {
+        this.postsService.getPostsByVoteType(this.selectedSection.dbName, filterData).subscribe((dt: any) => {
+            this.posts = dt;
+            this.filteredPosts.news = dt.news; // .slice(0, this.defaultRecords)
+            // window.scroll(0, 600);
+
+            ScrollUp.do();
+        });
+    }
+
     onIntersection(e, index) {
         if (index === this.filteredPosts.news.length - 1) {
             ++this.page;
@@ -76,6 +87,15 @@ export class ListComponent implements OnInit, OnDestroy {
             );
         }
 
+    }
+
+    incrementViews(single) {
+        this.postsService.updateViewCount(single).subscribe(dt => {
+            this.postsService.getSinglePost(single._id).subscribe((d: any) => {
+                this.subject.setPostScore(d.score);
+                single.views = d.views;
+            });
+        });
     }
 
     ngOnDestroy(): void {

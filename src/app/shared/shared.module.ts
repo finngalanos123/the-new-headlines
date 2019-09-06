@@ -65,7 +65,8 @@ import { HttpClientJsonpModule } from '@angular/common/http';
         StatusBarComponent,
         PostOptionsComponent,
         OwlCarouselComponent,
-        AsideComponent
+        AsideComponent,
+        FiltersComponent
     ]
 })
 export class SharedModule {

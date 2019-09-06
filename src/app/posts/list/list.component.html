@@ -31,7 +31,10 @@
                             </div>
 
 
+                            <app-filters [section]="selectedSection" (filter)="getFilteredPosts($event)"></app-filters>
                         </div>
+
+
                         <div class="all" id="allPosts">
 
                             <!-- Selected vote category -->
