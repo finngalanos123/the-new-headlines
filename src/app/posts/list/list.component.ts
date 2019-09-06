@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit,ViewChild,} from '@angular/core';
 import {PostsService} from '../../core/services/posts.service';
 import {Router} from '@angular/router';
 import {SubjectService} from '../../core/services/subject.service';
@@ -11,13 +11,14 @@ import ScrollUp from '../../core/helpers/scroll-up';
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnDestroy {
+export class ListComponent implements OnInit, OnDestroy{
 
     selectedSection;
     posts: any = [];
     page = 1;
     filteredPosts: any = {news: []};
     subscriptions: Subscription[] = [];
+    scrolBttn="none"
 
     constructor(
         private postsService: PostsService,
@@ -25,6 +26,11 @@ export class ListComponent implements OnInit, OnDestroy {
         private subject: SubjectService
     ) {
     }
+
+
+
+
+    
 
     ngOnInit(): void {
         this.getCategory();
@@ -34,7 +40,7 @@ export class ListComponent implements OnInit, OnDestroy {
                 this.getPosts();
             })
         );
-
+        
 
         this.getPosts();
 

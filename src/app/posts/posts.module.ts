@@ -13,7 +13,7 @@ import { SavePostComponent } from './save-post/save-post.component';
         CommonModule,
         PostsRoutingModule,
         SharedModule
-    ]
+    ],
 })
 export class PostsModule {
 }

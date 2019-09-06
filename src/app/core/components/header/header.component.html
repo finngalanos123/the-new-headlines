@@ -194,7 +194,7 @@
             </mat-sidenav-container>
         </div>
     </div>
-    <a scrollTo href="#header_top" id="button" [hidden]="!showScrollToTopBtn">
+    <a scrollTo href="#header_top" id="button" [hidden]="!showScrollToTopBtn" *ngIf="scrollBttn" >
         <i class="fas fa-chevron-up"></i>
     </a>
     <div class="feedback_btn">

@@ -31,19 +31,13 @@ export class HeaderComponent implements OnInit {
     isShown = false;
     show = false;
     sections: Section[] = MAIN_SECTIONS;
-    scrollPosition = 0;
     showScrollToTopBtn = false;
     postCategory;
+    scrollBttn=false
 
     userLoggined: any = [];
 
-    @HostListener('window:scroll', ['$event'])
-    private onScroll(e: Event): void {
-        this.scrollPosition = window.pageYOffset;
-        console.log(this.scrollPosition)
-
-        this.showScrollToTopBtn = window.pageYOffset > 1800;
-    }
+   
 
     constructor(
         private dialog: MatDialog,
@@ -114,7 +108,20 @@ export class HeaderComponent implements OnInit {
         // };
         //
         // this.fb.init(params);
+        window.addEventListener('scroll', this.scrollWindow, true);
     }
+    
+    scrollWindow=()=>{
+        let element=event.target as HTMLInputElement;
+        let scroll=element.scrollTop
+        if(scroll>1520){
+           this.scrollBttn=true
+        }
+        else{
+            this.scrollBttn=false
+        }
+    }
+
 
     openMyMenu() {
         this.trigger.openMenu();
