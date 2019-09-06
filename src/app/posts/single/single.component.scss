@@ -11,6 +11,18 @@
   color: #000000;
 }
 
+.main {
+  display: flex;
+
+  .postInfo {
+    width: 60%;
+  }
+
+  .rules {
+    width: 25%;
+  }
+}
+
 .comments, .questions {
   position: relative;
 
@@ -572,7 +584,7 @@
   font-size: 14.5px;
 }
 
-@media(max-width: 767px){
+@media(max-width: 767px) {
   .single_blog_post .post_title_and_desc h3 {
     font-size: 20px;
   }
