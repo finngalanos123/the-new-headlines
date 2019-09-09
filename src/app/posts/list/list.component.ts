@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 import {Component, OnDestroy, OnInit,ViewChild,} from '@angular/core';
 import {PostsService} from '../../core/services/posts.service';
+=======
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {PostsService} from '@core/services/posts.service';
+>>>>>>> 715ce5f7574d62858c6e92aeee02b172ef4d2a3a
 import {Router} from '@angular/router';
-import {SubjectService} from '../../core/services/subject.service';
-import GetCategory from '../../core/helpers/get-category';
+import {SubjectService} from '@core/services/subject.service';
+import GetCategory from '@core/helpers/get-category';
 import {Subscription} from 'rxjs';
-import ScrollUp from '../../core/helpers/scroll-up';
+import ScrollUp from '@core/helpers/scroll-up';
 
 @Component({
     selector: 'app-list',

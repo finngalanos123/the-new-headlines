@@ -1,16 +1,16 @@
 import {Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
-import {VOTE_TYPES} from '../../core/constants/app.config';
-import {AuthService} from '../../core/services/auth.service';
+import {VOTE_TYPES} from '@core/constants/app.config';
+import {AuthService} from '@core/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SubjectService} from '../../core/services/subject.service';
-import {CapitalizePipe} from '../../shared/pipes/capitalize.pipe';
+import {SubjectService} from '@core/services/subject.service';
+import {CapitalizePipe} from '@shared/pipes/capitalize.pipe';
 import * as JWTDecode from 'jwt-decode';
-import {PostsService} from '../../core/services/posts.service';
-import {VotesService} from '../../core/services/votes.service';
+import {PostsService} from '@core/services/posts.service';
+import {VotesService} from '@core/services/votes.service';
 import * as moment from 'moment';
-import {CommentsService} from '../../core/services/comments.service';
+import {CommentsService} from '@core/services/comments.service';
 
 @Component({
     selector: 'app-single',

@@ -1,5 +1,5 @@
-import {environment} from '../../../environments/environment';
-import {Section} from '../models/section';
+import {environment} from '@env/environment';
+import {Section} from '@core/models/section';
 
 export const API_URL = environment.url;
 

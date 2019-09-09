@@ -1,9 +1,9 @@
 import {Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {AuthService} from '../../../core/services/auth.service';
+import {AuthService} from '@core/services/auth.service';
 import {Router} from '@angular/router';
-import {PostsService} from '../../../core/services/posts.service';
-import {SubjectService} from '../../../core/services/subject.service';
+import {PostsService} from '@core/services/posts.service';
+import {SubjectService} from '@core/services/subject.service';
 import {ReportComponent} from '../report/report.component';
 
 @Component({

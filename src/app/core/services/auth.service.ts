@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {API_URL} from '../constants/app.config';
+import {API_URL} from '@core/constants/app.config';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
