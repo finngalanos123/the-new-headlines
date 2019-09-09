@@ -54,8 +54,9 @@ export class LoginComponent implements OnInit {
 
             // this.cookie.delete('uniqueUserId', '/');
             localStorage.setItem('full_name', r.fullname);
-            localStorage.setItem('userInf', JSON.stringify(r['token']));
+            localStorage.setItem('userInf', JSON.stringify(r));
             localStorage.setItem('token', r['token']);
+
             // this.subject.setUserData({...JWT(r.token), ...{fullName: r.fullname}});
             //this.router.navigate(['']);
             let el: HTMLElement = this.closest.nativeElement as HTMLElement;

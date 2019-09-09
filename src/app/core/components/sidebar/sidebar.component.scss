@@ -1,4 +1,14 @@
-.closeSidenav {
+.actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+
+  .homeBtn {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .closeSidenav {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

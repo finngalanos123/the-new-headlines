@@ -1,9 +1,17 @@
 <mat-nav-list>
 
-    <div class="closeSidenav">
-        <button mat-icon-button (click)="closeSidenav()">
-            <mat-icon>clear</mat-icon>
-        </button>
+    <div class="actions">
+        <div class="homeBtn">
+            <button mat-icon-button (click)="router.navigate(['/'])">
+                <mat-icon>home</mat-icon>
+            </button>
+        </div>
+
+        <div class="closeSidenav">
+            <button mat-icon-button (click)="closeSidenav()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
     </div>
     <a mat-list-item [routerLink]="'admin/dashboard'"> Dashboard </a>
     <a mat-list-item [routerLink]="'admin/complaints'"> Complaints </a>

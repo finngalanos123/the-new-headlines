@@ -124,6 +124,9 @@
                                                 <li>
                                                     <a (click)="router.navigate(['/profile'])">My Profile</a>
                                                 </li>
+                                                <li *ngIf="auth.checkRoles('admin')">
+                                                    <a (click)="router.navigate(['/admin/dashboard'])">Admin</a>
+                                                </li>
                                                 <li>
                                                     <a (click)="router.navigate(['/managePost'])">Manage Posts</a>
                                                 </li>
@@ -194,7 +197,7 @@
             </mat-sidenav-container>
         </div>
     </div>
-    <a scrollTo href="#header_top" id="button" [hidden]="!showScrollToTopBtn" *ngIf="scrollBttn" >
+    <a scrollTo href="#header_top" id="button" [hidden]="!showScrollToTopBtn" *ngIf="scrollBttn">
         <i class="fas fa-chevron-up"></i>
     </a>
     <div class="feedback_btn">
