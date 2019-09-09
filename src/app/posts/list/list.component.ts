@@ -1,4 +1,4 @@
-import {PostsService} from '../../core/services/posts.service';
+import {PostsService} from '@core/services/posts.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {SubjectService} from '@core/services/subject.service';
@@ -14,6 +14,7 @@ import ScrollUp from '@core/helpers/scroll-up';
 export class ListComponent implements OnInit, OnDestroy {
 
     selectedSection;
+    selectedFilter;
     posts: any = [];
     page = 1;
     filteredPosts: any = {news: []};
@@ -59,8 +60,7 @@ export class ListComponent implements OnInit, OnDestroy {
         this.postsService.getPostsByVoteType(this.selectedSection.dbName, filterData).subscribe((dt: any) => {
             this.posts = dt;
             this.filteredPosts.news = dt.news; // .slice(0, this.defaultRecords)
-            // window.scroll(0, 600);
-
+            this.selectedFilter = filterData;
             ScrollUp.do();
         });
     }

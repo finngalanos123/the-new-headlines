@@ -37,11 +37,14 @@
 
                         <div class="all" id="allPosts">
 
-                            <!--                             Selected vote category -->
-<!--                            <div *ngIf="selectedFilter.vote!=='All'" class="selectedVoteCategory">-->
-<!--                                <small class>Voting category:</small>-->
-<!--                                <span>{{selectedFilter.vote}}</span>-->
-<!--                            </div>-->
+                            <!--Selected vote category -->
+                            <ng-container *ngIf="selectedFilter">
+
+                                <div *ngIf="selectedFilter.vote!=='All'" class="selectedVoteCategory">
+                                    <small class>Voting category: </small>
+                                    <span>{{selectedFilter.vote}}</span>
+                                </div>
+                            </ng-container>
                             <div class="loop_items item posts_items"
                                  *ngFor="let single of filteredPosts.news| searchNews: searchTerm;let ind = index"
                                  infiniteScroll
