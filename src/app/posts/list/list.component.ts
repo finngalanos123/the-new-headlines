@@ -11,21 +11,21 @@ import ScrollUp from '@core/helpers/scroll-up';
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnDestroy{
+export class ListComponent implements OnInit, OnDestroy {
 
     selectedSection;
     posts: any = [];
     page = 1;
     filteredPosts: any = {news: []};
     subscriptions: Subscription[] = [];
-    scrolBttn="none"
+    scrolBttn = "none"
 
     constructor(
         private postsService: PostsService,
         public router: Router,
-        private subject:SubjectService
+        private subject: SubjectService
     ) {
-    }    
+    }
 
     ngOnInit(): void {
         this.getCategory();
@@ -35,7 +35,7 @@ export class ListComponent implements OnInit, OnDestroy{
                 this.getPosts();
             })
         );
-        
+
 
         this.getPosts();
 

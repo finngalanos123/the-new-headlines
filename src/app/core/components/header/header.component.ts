@@ -32,11 +32,10 @@ export class HeaderComponent implements OnInit {
     sections: Section[] = MAIN_SECTIONS;
     showScrollToTopBtn = false;
     postCategory;
-    scrollBttn=false
+    scrollBttn = false
 
     userLoggined: any = [];
 
-   
 
     constructor(
         private dialog: MatDialog,
@@ -54,9 +53,9 @@ export class HeaderComponent implements OnInit {
             searchTerm: ''
         });
 
-        // this.subject.getUserData().subscribe((dt: any) => {
-        //   this.userData.fullName = dt.fullName;
-        // });
+        this.subject.getUserData().subscribe((dt: any) => {
+            this.userData.fullName = dt.fullName;
+        });
         //
         this.subject.getDialogState().subscribe((dt) => {
             if (dt.state === 'closed') {
@@ -82,7 +81,10 @@ export class HeaderComponent implements OnInit {
             }
         });
 
-        this.userData.fullName = localStorage.getItem('full_name');
+        if (!this.userData.fullName) {
+
+            this.userData.fullName = localStorage.getItem('full_name');
+        }
     }
 
 
@@ -109,15 +111,14 @@ export class HeaderComponent implements OnInit {
         // this.fb.init(params);
         window.addEventListener('scroll', this.scrollWindow, true);
     }
-    
-    scrollWindow=()=>{
-        let element=event.target as HTMLInputElement;
-        let scroll=element.scrollTop
-        if(scroll>1520){
-           this.scrollBttn=true
-        }
-        else{
-            this.scrollBttn=false
+
+    scrollWindow = () => {
+        let element = event.target as HTMLInputElement;
+        let scroll = element.scrollTop
+        if (scroll > 1520) {
+            this.scrollBttn = true
+        } else {
+            this.scrollBttn = false
         }
     }
 
@@ -184,9 +185,9 @@ export class HeaderComponent implements OnInit {
 
     logOut(): void {
         // this.authService.signOut();
-        localStorage.setItem('userInf', null);
+        localStorage.setItem('userInf', '');
         localStorage.setItem('token', '');
-        localStorage.setItem('full_name', null);
+        localStorage.setItem('full_name', '');
         this.router.navigate(['/']);
     }
 

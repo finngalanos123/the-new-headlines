@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userInf', JSON.stringify(r));
             localStorage.setItem('token', r['token']);
 
-            // this.subject.setUserData({...JWT(r.token), ...{fullName: r.fullname}});
+            this.subject.setUserData({...r, ...{fullName: r.fullname}});
             //this.router.navigate(['']);
             let el: HTMLElement = this.closest.nativeElement as HTMLElement;
             el.click();
