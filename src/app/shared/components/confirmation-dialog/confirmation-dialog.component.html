@@ -1,0 +1,18 @@
+<div class="dialogContainer">
+    <mat-dialog-content>
+        <span>Please confirm this action</span>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div class="actions">
+            <button mat-flat-button (click)="cancel()">Cancel</button>
+            <button mat-raised-button color="warn" [mat-dialog-close]="true" (click)="confirm()" cdkFocusInitial>
+                Confirm
+            </button>
+        </div>
+
+    </mat-dialog-actions>
+
+
+</div>
+

@@ -3,7 +3,7 @@
         <app-sidebar (closeSidebar)="sidenav.toggle()"></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <app-header></app-header>
+        <app-header *ngIf="!router.url.includes('admin')"></app-header>
         <router-outlet></router-outlet>
         <app-footer></app-footer>
     </mat-sidenav-content>

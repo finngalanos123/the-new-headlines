@@ -19,7 +19,10 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import {AsideComponent} from './components/aside/aside.component';
 import {CapitalizePipe} from './pipes/capitalize.pipe';
 import {StripHtmlTagsPipe} from './pipes/strip-html-tags.pipe';
-import { HttpClientJsonpModule } from '@angular/common/http';
+import {HttpClientJsonpModule} from '@angular/common/http';
+import {MatReusableTableComponent} from './components/mat-reusable-table/mat-reusable-table.component';
+import {ConfirmationDialogComponent} from './components/confirmation-dialog/confirmation-dialog.component';
+import {GetTableDataSourcePipe} from './pipes/get-table-data-source.pipe';
 
 @NgModule({
     declarations: [
@@ -36,6 +39,9 @@ import { HttpClientJsonpModule } from '@angular/common/http';
         AsideComponent,
         CapitalizePipe,
         StripHtmlTagsPipe,
+        MatReusableTableComponent,
+        ConfirmationDialogComponent,
+        GetTableDataSourcePipe,
     ],
     imports: [
         CommonModule,
@@ -43,7 +49,7 @@ import { HttpClientJsonpModule } from '@angular/common/http';
         ReactiveFormsModule,
         MaterialModule,
         ShareButtonModule,
-        HttpClientJsonpModule, 
+        HttpClientJsonpModule,
         ShareButtonsModule.withConfig({
             debug: true
         }),
@@ -66,7 +72,12 @@ import { HttpClientJsonpModule } from '@angular/common/http';
         PostOptionsComponent,
         OwlCarouselComponent,
         AsideComponent,
-        FiltersComponent
+        FiltersComponent,
+        MatReusableTableComponent
+    ],
+    entryComponents: [
+        ReportComponent,
+        ConfirmationDialogComponent
     ]
 })
 export class SharedModule {

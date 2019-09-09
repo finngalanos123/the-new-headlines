@@ -17,7 +17,7 @@
             </div>
             <div id='newsBlock' class="news-block carusel-block">
 
-                <div class="item" (click)="a()">
+                <div class="item">
                     <div class="content_block">
                         <div class="blocks_filter">
                             <div class="text-block">
@@ -37,11 +37,11 @@
 
                         <div class="all" id="allPosts">
 
-                            <!-- Selected vote category -->
-                            <!--                            <div *ngIf="selectedFilter.vote!=='All'" class="selectedVoteCategory">-->
-                            <!--                                <small class>Voting category:</small>-->
-                            <!--                                <span>{{selectedFilter.vote}}</span>-->
-                            <!--                            </div>-->
+                            <!--                             Selected vote category -->
+<!--                            <div *ngIf="selectedFilter.vote!=='All'" class="selectedVoteCategory">-->
+<!--                                <small class>Voting category:</small>-->
+<!--                                <span>{{selectedFilter.vote}}</span>-->
+<!--                            </div>-->
                             <div class="loop_items item posts_items"
                                  *ngFor="let single of filteredPosts.news| searchNews: searchTerm;let ind = index"
                                  infiniteScroll

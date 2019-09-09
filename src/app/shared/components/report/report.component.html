@@ -1,3 +1,30 @@
-<p>
-  report works!
-</p>
+<div class="report_box">
+    <mat-dialog-content class="mat-typography">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="logo_and_close">
+                    <h5 class="modal-title rep_com">Report</h5>
+                </div>
+                <div class="modal-body">
+                    <form method="post" [formGroup]="reportForm">
+                        <div class="border_btm">
+                            <mat-radio-group aria-label="Select an option" formControlName="type">
+                                <mat-radio-button value="Spam">Spam</mat-radio-button>
+                                <mat-radio-button value="Porn">Pornography or Sexual Material</mat-radio-button>
+                                <mat-radio-button value="HateSpeech">Hate Speech or violence</mat-radio-button>
+                                <mat-radio-button value="Bully">Harassment or bullying</mat-radio-button>
+                                <mat-radio-button value="Harmful">Abusive or harmful</mat-radio-button>
+                                <mat-radio-button value="Wrong">Wrong Category</mat-radio-button>
+                            </mat-radio-group>
+                            <div class="flex_cont_btn">
+                                <button class="cancel" mat-dialog-close>Cancel</button>
+                                <button class="report_btn" [mat-dialog-close]="true" (click)="reportPost()">Report
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

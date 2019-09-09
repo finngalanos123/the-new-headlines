@@ -1,66 +1,75 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class SubjectService {
 
-  public userData = new Subject<any>();
-  public searchData = new Subject<string>();
-  public dialogState = new Subject<string>();
-  public postCategory = new Subject<string>();
-  public postScore = new Subject<string>();
+    public userData = new Subject<any>();
+    public searchData = new Subject<string>();
+    public dialogState = new Subject<string>();
+    public postCategory = new Subject<string>();
+    public postScore = new Subject<string>();
+    public tableData = new Subject<any>();
 
-  constructor() {
-  }
+    constructor() {
+    }
 
 
-  /**
-   * Sets current language of the system and passes to subscribed components
-   * @param value
-   */
-  setUserData(value) {
-    this.userData.next(value);
-  }
+    /**
+     * Sets current language of the system and passes to subscribed components
+     * @param value
+     */
+    setUserData(value) {
+        this.userData.next(value);
+    }
 
-  /**
-   * Gets current language of the system and returns to subscribed components
-   * @returns {Observable<string>}
-   */
-  getUserData(): Observable<any> {
-    return this.userData.asObservable();
-  }
+    /**
+     * Gets current language of the system and returns to subscribed components
+     * @returns {Observable<string>}
+     */
+    getUserData(): Observable<any> {
+        return this.userData.asObservable();
+    }
 
-  setSearch(value) {
-    this.searchData.next(value);
-  }
+    setSearch(value) {
+        this.searchData.next(value);
+    }
 
-  getSearch(): Observable<any> {
-    return this.searchData.asObservable();
-  }
+    getSearch(): Observable<any> {
+        return this.searchData.asObservable();
+    }
 
-  setDialogState(value) {
-    this.dialogState.next(value);
-  }
+    setDialogState(value) {
+        this.dialogState.next(value);
+    }
 
-  getDialogState(): Observable<any> {
-    return this.dialogState.asObservable();
-  }
+    getDialogState(): Observable<any> {
+        return this.dialogState.asObservable();
+    }
 
-  setPostCategory(value) {
-    this.postCategory.next(value);
-  }
+    setPostCategory(value) {
+        this.postCategory.next(value);
+    }
 
-  getPostCategory(): Observable<any> {
-    return this.postCategory.asObservable();
-  }
+    getPostCategory(): Observable<any> {
+        return this.postCategory.asObservable();
+    }
 
-  setPostScore(value) {
-    return this.postScore.next(value);
-  }
+    setPostScore(value) {
+        return this.postScore.next(value);
+    }
 
-  getPostScore(): Observable<any> {
-    return this.postScore.asObservable();
-  }
+    getPostScore(): Observable<any> {
+        return this.postScore.asObservable();
+    }
+
+    setTableData(value) {
+        this.tableData.next(value);
+    }
+
+    getTableData(): Observable<any> {
+        return this.tableData.asObservable();
+    }
 }

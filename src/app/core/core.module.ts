@@ -18,7 +18,8 @@ import {CookieService} from 'ngx-cookie-service';
 import {CountPostScorePipe} from '@shared/pipes/count-post-score.pipe';
 import {ScrollToModule} from 'ng2-scroll-to';
 import {CapitalizePipe} from '@shared/pipes/capitalize.pipe';
-import{FormsModule,ReactiveFormsModule} from'@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {GetTableDataSourcePipe} from '@shared/pipes/get-table-data-source.pipe';
 
 // Token getter for JWT module
 export function tokenGetter() {
@@ -62,7 +63,8 @@ export function tokenGetter() {
         },
         CookieService,
         CountPostScorePipe,
-        CapitalizePipe
+        CapitalizePipe,
+        GetTableDataSourcePipe
     ],
     exports: [
         HeaderComponent,

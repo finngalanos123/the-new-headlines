@@ -1,0 +1,8 @@
+<div class="content">
+
+  <div class="complaints">
+    <h3>Complaints</h3>
+    <app-mat-table *ngIf="complaints" [cols]="columns" [data]="complaints"
+                   [item]="'complaints'"></app-mat-table>
+  </div>
+</div>

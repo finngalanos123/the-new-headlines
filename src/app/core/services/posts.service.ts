@@ -80,11 +80,15 @@ export class PostsService {
     }
 
     update(id, data) {
-        return this.http.put(API_URL + '/api/news/' + id, data);
+        return this.http.put(`${API_URL}/api/news/${id}`, data);
     }
 
     remove(id) {
-        return this.http.delete(API_URL + '/api/news/' + id);
+        return this.http.delete(`${API_URL}/api/news/${id}`);
+    }
+
+    report(data) {
+        return this.http.post(`${API_URL}/api/general/reports`, data);
     }
 
 }
