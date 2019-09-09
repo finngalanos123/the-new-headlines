@@ -18,6 +18,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {CountPostScorePipe} from '@shared/pipes/count-post-score.pipe';
 import {ScrollToModule} from 'ng2-scroll-to';
 import {CapitalizePipe} from '@shared/pipes/capitalize.pipe';
+import{FormsModule,ReactiveFormsModule} from'@angular/forms'
 
 // Token getter for JWT module
 export function tokenGetter() {
@@ -35,6 +36,8 @@ export function tokenGetter() {
     ],
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         SharedModule,
         RouterModule,
         HttpClientModule,
@@ -48,6 +51,7 @@ export function tokenGetter() {
             }
         }),
         ToastrModule.forRoot(),
+        MaterialModule
 
     ],
     providers: [

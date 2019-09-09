@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.subject.setDialogState({state: 'closed', dialog: 'login'});
     }
 
-    authenticate(data) {
+    authenticate() {
         this.submitted = true;
         this.auth.authenticate(this.loginForm.value).subscribe((r: any) => {
 
