@@ -1,0 +1,85 @@
+<div class="container-fluid no-padding">
+  <div class="post_content">
+    <div class="row no-gutters">
+      <div class="col-md-12">
+        <div class="profile_container post_box_cont">
+          <div class="">
+            <div class="posts_box">
+              <div class="sub_headline_text">
+                <h3> My posts </h3>
+              </div>
+              <div class="my_posts">
+                <form [formGroup]="postForm">
+                  <mat-form-field>
+                    <mat-select name="food" formControlName="category" class="managePostsCats"
+                                (selectionChange)="selectCategory($event.source.value)">
+                      <mat-option disabled [value]="0">Choose a Section</mat-option>
+                      <mat-option *ngFor="let food of categories" [value]="food.dbName">
+                        {{food.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </form>
+
+                <ng-container class="news-block">
+                  <div class="table_container">
+                    <table mat-table [dataSource]="filteredPosts"
+                           class="mat-elevation-z8 postsTable"
+                           *ngIf="categorySelected && posts && posts.news && posts.news.length!==0">
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="extractedTitle">
+                        <th mat-header-cell *matHeaderCellDef> Name of the post</th>
+                        <td mat-cell *matCellDef="let element">
+                          <a [href]="element.link"
+                             target="_blank">{{element.extractedTitle}}</a>
+                          <p>{{element.description|stripTags}}</p>
+                        </td>
+                      </ng-container>
+
+                      <!-- Image Column -->
+                      <ng-container matColumnDef="extractedImage">
+                        <th mat-header-cell *matHeaderCellDef> Image</th>
+                        <td mat-cell *matCellDef="let element">
+                          <div class="postImage"
+                               [style.background]="getBackgroundUrl(element.extractedImage)">
+                          </div>
+                        </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef> Date</th>
+                        <td mat-cell
+                            *matCellDef="let element"> {{getPostDate(element.createdAt)}} </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Actions</th>
+                        <td mat-cell *matCellDef="let element">
+                          <button mat-icon-button (click)="editPost(element._id)">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+                          <button mat-icon-button (click)="removePost(element._id)">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <div *ngIf="posts && posts.news && posts.news.length===0 && categorySelected">
+                      You haven't posted news in this category.
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

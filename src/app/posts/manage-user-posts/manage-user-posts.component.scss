@@ -1,0 +1,250 @@
+.add_new {
+  width: 113px;
+  height: 33px;
+  background-color: #3788c6;
+  border: none;
+  font-family: 'Lato-Regular';
+  font-size: 17px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.76;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3788c6;
+}
+
+.post_or_cancel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .blue {
+    background-color: #3788c6;
+  }
+
+  .blue {
+    display: inline-block;
+    height: 100%;
+    line-height: unset;
+    padding: 7px;
+  }
+
+  button.red {
+    background-color: #e14040;
+    border: none;
+    color: white;
+    font-family: 'Lato-Regular';
+    font-size: 17px;
+    width: 113px;
+    height: 33px;
+  }
+}
+
+p-dataTable {
+  word-break: break-all;
+
+  input {
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+  }
+}
+
+.edit_or_delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 20px;
+    height: 30px;
+  }
+
+  .edit {
+    background: unset;
+    border: unset;
+
+    button {
+      border: unset;
+      background: unset;
+    }
+  }
+
+  .delete {
+    margin-left: 20px;
+
+    button {
+      border: unset;
+      background: unset;
+    }
+  }
+}
+
+.post_box_cont {
+  padding-top: 140px;
+  padding-bottom: 50px;
+
+  .posts_box {
+    padding: 50px 0;
+    background: white;
+  }
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.posts_table th.mat-header-cell.ng-star-inserted {
+  border: 1px solid black;
+  font-size: 15px;
+  font-family: 'Lato-Black';
+  padding: 0 20px;
+}
+
+.posts_table td.mat-cell.ng-star-inserted {
+  border: 1px solid black;
+  font-size: 15px;
+  font-family: 'Lato-Black';
+  padding: 0 20px;
+}
+
+.posts_box .sub_headline, .posts_box .my_posts {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.save_data {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: #3788c6;
+  color: white;
+  padding: 0 20px;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+  text-transform: uppercase;
+  fill: white;
+  display: block;
+  border-width: 1px;
+  border-style: solid;
+  -o-border-image: initial;
+  border-radius: 4px;
+  text-decoration: none;
+  width: 120px;
+  margin-right: 16px;
+
+  span.mat-button-wrapper {
+    width: 100% !important;
+
+    mat-icon {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.posts_box {
+  .sub_headline_text {
+    width: 80%;
+    margin: 0 auto;
+
+    h3 {
+      //border-bottom: 3px solid #e14040;
+      padding-bottom: 0;
+      margin-bottom: 30px;
+      text-transform: capitalize;
+    }
+  }
+
+  select {
+    position: relative;
+    box-sizing: border-box;
+    min-width: 300px;
+    height: 40px;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    transition: box-shadow 0.2s ease 0s;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(237, 239, 241);
+    border-image: initial;
+    display: block;
+    caret-color: rgb(0, 121, 211);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    vertical-align: middle;
+    color: rgb(28, 28, 28);
+    padding: 0 10px;
+  }
+}
+
+
+.my_posts .posts_items {
+  width: 600px;
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+  background-color: #fff;
+  margin: 40px 0;
+  padding: 0;
+}
+
+.my_posts .posts_items .text-block {
+  padding: 10px 15px;
+}
+
+.postsTable {
+  width: 100%;
+}
+
+.postImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  background-size: cover !important;
+  margin: 20px;
+}
+
+.table_container {
+  overflow: auto;
+}
+
+@media(max-width: 767px) {
+  .posts_box {
+    padding: 60px 0 !important;
+  }
+  .postImage {
+    width: 130px;
+    height: 130px;
+  }
+  .posts_table table tbody th, .posts_table td {
+    padding: 0 7px !important;
+  }
+  .postsTable .mat-icon {
+    height: 20px;
+    width: 20px;
+    line-height: 4px;
+  }
+}
+
+@media(max-width: 600px) {
+  .postImage {
+    width: 100px;
+    height: 100px;
+    margin: 6px;
+  }
+}
+
+

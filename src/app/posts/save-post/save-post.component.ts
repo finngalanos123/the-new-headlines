@@ -104,7 +104,7 @@ export class SavePostComponent implements OnInit, OnDestroy {
 
     cancelPosting() {
         this.postSubmitted = true;
-        this.router.navigate([this.editCase ? '/managePost' : '/']);
+        this.router.navigate([this.editCase ? 'posts/manage' : '/']);
     }
 
     getCurrentSection(category) {
