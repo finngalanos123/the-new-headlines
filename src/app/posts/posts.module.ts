@@ -7,9 +7,10 @@ import {SingleComponent} from './single/single.component';
 import {SharedModule} from '../shared/shared.module';
 import { SavePostComponent } from './save-post/save-post.component';
 import { ManageUserPostsComponent } from './manage-user-posts/manage-user-posts.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-    declarations: [ListComponent, SingleComponent, SavePostComponent, ManageUserPostsComponent],
+    declarations: [ListComponent, SingleComponent, SavePostComponent, ManageUserPostsComponent, AboutComponent],
     imports: [
         CommonModule,
         PostsRoutingModule,

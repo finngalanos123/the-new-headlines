@@ -40,6 +40,17 @@ export const VOTE_TYPES = [
     {name: 'Grand', displayName: 'Grand', pages: ['LoveDesigns']},
     {name: 'Creative', displayName: 'Creative', pages: ['LoveDesigns']}
 ];
+
+
+export const ABOUT_TABS = [
+    {name: 'About', route: 'about'},
+    {name: 'Terms', route: 'terms'},
+    {name: 'Privacy Policy', route: 'policy'},
+    {name: 'Content Policy', route: 'policy2'},
+    {name: 'Score', route: 'score'},
+    {name: 'Advertise', route: 'advertise'},
+];
+
 export const CONFIRM_DIALOG_SETTINGS = {autoFocus: true, width: '300px'};
 export const MAT_TABLE_PAGINATION_VALUES = [5, 10, 25, 100];
 export const SPINNER_DIAMETER = 30;
